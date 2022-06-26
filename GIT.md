@@ -187,3 +187,11 @@ git push
 git pull
 ```
 
+## I have an error
+
+> do bellow :
+
+```
+git push --set-upstream origin main
+```
+
