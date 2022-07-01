@@ -195,7 +195,7 @@ class Counter extends Component {
 ```javascript
 // in Counters class
 handleDelete = (counterId) => {
-        const couners = this.state.counters.filter(m => m.id !== counterId);
+        const counters = this.state.counters.filter(m => m.id !== counterId);
     	this.setState({counters});
 }
     render() {
@@ -208,7 +208,7 @@ handleDelete = (counterId) => {
                             value={counter.value}
                             selected={true}
                             id={counter.id}
-                            onDelete={this.handleDelete}>
+                            onDelete={this.handleDelete}> 
                         </Counter>
                     )}
             </div>
@@ -232,7 +232,7 @@ render() {
 
 ### Single Source of Truth
 
-> in the examples above , if we want to __include a button that on click makes all Counter value to zero 0 ) we would have problem .
+> in the examples above , if we want to __include__ a button that on click makes all Counter value to zero 0 ) we would have problem .
 >
 > for that we remove the
 >
@@ -613,7 +613,7 @@ export default class Like extends Component{
                         </tr>
 ```
 
-> as you can see , the movies array does not have any element named liked ! but any way we have this peace of code
+> as you can see , the movies array does not have any state or vnamed liked ! but any way we have this peace of code
 >
 > ```javascript
 > <Like liked={movie.liked} onClick={() => this.handleLike(movie)}/>
