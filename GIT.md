@@ -195,3 +195,23 @@ git pull
 git push --set-upstream origin main
 ```
 
+### Remove a URL or git remote 
+
+```javascript
+git remote -v   // to see current remotes
+//---------------------
+git remote rm destination // to remove the current remote
+//---------------------
+// then you can add new one with :
+git remote add origin theURL
+//---------------------
+git push
+//---------------------
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream
+// if you had not any upstream use bellow code :
+git push --set-upstream origin main
+//-----------------------
+
+```
+
