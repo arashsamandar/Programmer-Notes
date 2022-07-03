@@ -39,6 +39,6 @@ git checkout my-new-branch
 > then push to new branch like bellow :
 
 ```
-git push -u origin my-
+git push -u origin my-new-
 ```
 
