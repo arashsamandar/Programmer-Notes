@@ -502,3 +502,10 @@ class LoginForm extends Form {
 export default LoginForm;
 ```
 
+### A NOTE From Controlled Elements :
+
+> you already know what a `controlled element` is , it gets its data via `props` and it raises event to the parent .
+
+:star: __IMPORTANT__
+
+> Controlled Components can't have `this` , or `null` or `undefined`
