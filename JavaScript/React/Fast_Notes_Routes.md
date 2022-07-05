@@ -195,3 +195,302 @@ navigate('/toPath', {state: customData})
 > and in the address of `Route` for that dynamic `id` , dynamic path , you would use `:` , like bellow :
 >
 > <Link to="/products/:id" , and if it is mandatory you will also use `?` , like `<Link to="/products/:id?"`
+
+#### How to Show the id of above <Link to={`/products/${product.id}`}
+
+> you can use the `Hooks` , like bellow code :
+
+```javascript
+import React,{Component} from "react";
+import {useParams} from 'react-router-dom'; //remember how to Import it from 'react-router-dom'
+
+const ProductDetails = () => {
+    const params = useParams(); // useParams() is a Hook
+    return <h3>Product Number - > {params.id}</h3>;
+}
+export default ProductDetails;
+```
+
+### Installing Query-String to be able to read queryStrings
+
+> install it with
+>
+> ```
+> npm i query-string
+> ```
+
+> now getting `QueryString` with bellow code :
+>
+> ```javascript
+> import React from "react";
+> import queryString from 'query-string';
+> import useSearchParams from 'react-router-dom'; // another hook named : useSearchParams
+> 
+> const Posts = ({match,location}) => {
+>     const [searchParams, setSearchParams] = useSearchParams();
+>     console.log(searchParams.get("__firebase_request_key"));
+>     return (
+>         <div>
+>             <h1>Posts</h1>
+>         </div>
+>     )
+> }
+> export default Posts;
+> ```
+>
+> 
+
+### this is a way to get `parameters` that we send to a `URL`
+
+```javascript
+const ProductDetails = () => {
+    const params = useParams(); // with useParams() , and then {params.id}
+    return <h3>Product Number - > {params.id}</h3>;
+}
+export default ProductDetails;
+```
+
+> using this __useParams()__ we get bellow parameters :
+>
+> ```javascript
+> <Route path="/products/:id" element={<ProductDetails />}/> //meaning /product/:id we get id
+> ```
+
+### getting the `SearchQuery` , by using `location.search` , like bellow :
+
+```javascript
+import React,{Component} from "react";
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
+
+const Posts = () => {
+        const location = useLocation(); // here is important
+        console.log(location.search); // and here . but there is something wrong , because it
+    	console.log(queryString.parse(location.search))	// shows like '?name=arash'
+        return (
+            <div>
+                <h2>Hello Posts</h2>
+            </div>
+        )
+
+}
+export default Posts;
+```
+
+> > NOTE :star: : see and use bellow code , `location` , `search` , `location.search` , and `queryString.parse(location.search)`
+
+```javascript
+import React,{Component} from "react";
+import queryString from 'query-string'; // Important
+import { useLocation } from 'react-router-dom';
+
+const Posts = () => {
+        const location = useLocation(); // Important
+        console.log(location.search); // Important
+        console.log(queryString.parse(location.search)); // Important
+        return (
+            <div>
+                <h2>Hello Posts</h2>
+            </div>
+        )
+
+}
+export default Posts;
+```
+
+```javascript
+// so we have
+import {useLocation} = 'react-router-dom';
+import {useParams} = 'react-router-dom';
+const location = useLocation();
+console.log(location.search);
+console.log(queryString.parse(location.search));
+// and bellow :
+import React,{Component} from "react";
+import {useParams} from 'react-router-dom'; //remember how to Import it from 'react-router-dom'
+
+const ProductDetails = () => {
+    const params = useParams(); // useParams() is a Hook
+    return <h3>Product Number - > {params.id}</h3>;
+}
+export default ProductDetails;
+```
+
+### Redirect To NotFound
+
+> we use `Navigate` in the newer version of `React.js` , as you can see bellow .
+>
+> NOTE : `Navigate` really , Redirects the Address , look bellow code ,
+>
+> ```
+> <Route path="/redirect" element={<Navigate to="/note-found" />}
+> ```
+>
+> *In this code if you type `localhost:3000/redirect` , you would go to to="/not-found"*
+
+```javascript
+import {Route,Switch, Navigate, Link, Routes} from 'react-router-dom'; // here it is
+import React,{Component} from "react";
+import NotFound from "./components/notFound";
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Link to="/posts">Posts</Link><br></br>
+                    <Routes>
+                    <Route path="/posts" element={<Posts />}/>
+                    <Route path="/note-found" element={<NotFound />} />
+                    <Route path="/redirect" element={<Navigate to="/note-found" />} // its here
+                    </Routes>
+            </div>
+        )
+    }
+}
+export default App;
+```
+
+> so we easily puth the `Navigate` , in our `Route` Element . and our `Navigate` Component , has its own destination ==> `to="/not-found"` , which overrides the `Route` `path` , path="/redirect" , 
+>
+> NOTE : __In Other Words , It really redirects the path="/redirect" and goes to -> to="/not-found"__
+
+## React Version
+
+```javascript
+handleClick = () => {
+        console.log(React.version);
+};
+// our React Version is 18.2.0
+
+//-------------------------All OF Them---------------
+"react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+```
+
+#### `useHistory()` doesn't work , use `useNavigate()` instead
+
+> as said : *__useHistory()__* doesn't work , use *__useNavigate()__ instead*.
+>
+> like bellow code :
+
+```javascript
+// in the utils.jsx we have
+import {useNavigate} from 'react-router-dom';
+
+export default function GetNav() {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        // 👇️ navigate programmatically
+        navigate('/about');
+    };
+
+    return (
+        <div>
+            <button onClick={handleClick}>Navigate to About</button>
+        </div>
+    );
+}
+```
+
+> and we used it in bellow code :arrow_double_down:
+
+```javascript
+import GetNav from "../utils";
+
+
+class Products extends Component {
+    handleClick = () => {
+        <GetNav />
+    };
+    render() {
+        return (
+            <GetNav />
+        )
+    }
+}
+export default Products;
+```
+
+## _____________________________________________________________________________________________________________________________________________________________
+
+### navigate `useNavigate`
+
+```javascript
+import {useNavigate} from 'react-router-dom';
+
+export default function GetNav(props) {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        // 👇️ navigate programmatically
+        navigate(props.address);
+    };
+
+    return (
+        <div>
+            <button onClick={handleClick}>{props.address}</button>
+        </div>
+    );
+}
+```
+
+### params `useParams`
+
+```javascript
+import {useParams} from 'react-router-dom';
+import bootstrap from 'bootstrap';
+import GetNav from "../utils";
+
+const ProductDetails = () => {
+    const params = useParams(); // useFull when you have /user/:id like /user/2
+    return (
+        <React.Fragment>
+        <h3>Product Number - > {params.id} <GetNav /></h3> // params.id used here
+        </React.Fragment>
+        )
+}
+export default ProductDetails;
+```
+
+### location `useLocation`
+
+```javascript
+import React,{Component} from "react";
+import queryString from 'query-string';
+import {useLocation, useParams} from 'react-router-dom';
+
+const Posts = () => {
+        const location = useLocation();
+        console.log(location.search); // www.google.com?name=arash >> so it console.log arash
+        console.log(queryString.parse(location.search));
+        return (
+            <div>
+                <h2>Hello Posts</h2>
+            </div>
+        )
+
+}
+export default Posts;
+```
+
+### IMPORTANT :star: how to use `useNavigate()` instead of `useHistory()`
+
+> *It is very easy to achieve this , just take a look at bellow code :*
+
+```javascript
+import { useNavigate } from 'react-router-dom'
+
+function Test() {
+  const navigate = useNavigate();
+  navigate('/');                    // Equivalent to "history.push('/');"
+  navigate('/', { replace: true }); // Equivalent to "history.replace('/');"
+  navigate(-1);                     // Equivalent to "history.goBack();"
+}
+
+Test();
+```
+
+
+
