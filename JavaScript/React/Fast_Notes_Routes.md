@@ -91,28 +91,29 @@ import Dashboard from './components/Dashboard';
 import Products from './components/Products';
 import Posts from './components/Posts';
 import Home from './components/home';
-import {Route,Switch} from 'react-router-dom';
+import {Route, Navigate,Link} from 'react-router-dom';
 import React,{Component} from "react";
+import ProductDetails from "./components/productDetails";
 import {Routes} from "react-router";
-import {Link} from "react-router-dom";
 
 class App extends Component {
     render() {
         return (
-            <React.Fragment>
+            <div>
                 <Link to="/">Home</Link><br></br>
                 <Link to="/posts">Posts</Link><br></br>
                 <Link to="/products">Products</Link><br></br>
                 <Link to="/dashboard">Dashboard</Link><br></br>
 
                     <Routes>
-                    <Route path="/"  element={<Home />}/>
-                    <Route path="/products" element={<Products />}/>
+                    <Route path="/products/:id" element={<ProductDetails />}/>
+                    <Route path="/" exact element={<Home />}/>
+                    <Route path="/products"  element={<Products />}/>
                     <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path="/posts" element={<Posts />}/>
+        IMPORTANT : <Route path="/redirect" element={ <Navigate to="/not-found" /> } />
                     </Routes>
-
-            </React.Fragment>
+            </div>
         )
     }
 }
@@ -316,7 +317,7 @@ const ProductDetails = () => {
 export default ProductDetails;
 ```
 
-### Redirect To NotFound
+### Using `Navigate` as `Redirect` To `NotFound`
 
 > we use `Navigate` in the newer version of `React.js` , as you can see bellow .
 >
@@ -492,5 +493,45 @@ function Test() {
 Test();
 ```
 
+## HighLight the currently selected Route
 
+> you could use `<NavLink className="nav-item nav-link" to="/customers"`
+
+> Note :star: that `NavLink` is another class of the `react-route-element`
+
+> we have also : bellow :arrow_double_down:
+
+```javascript
+import {NavLink , BrowserRouter} from 'react-router-dom';
+```
+
+> the version is : `4.3.1` , lnstall it like bellow :
+
+```
+npm i react-router-dom@4.3.1
+```
+
+```javascript
+// in the index.js , we have :
+import React from "react";
+import ReactDom form 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+ReactDom.render(
+	<BrowserRouter>
+    	<App />
+    <BrowserRouter>,
+    document.getElementById("root")
+);
+```
+
+> create `Redirect` path , with bellow code : using `<Navigate to="/not-found"/>`
+>
+> NOTE : Meaning , With Bellow Code : if you go to the `/redirect` path , you would go to `/not-found` route !!
+>
+> so > using `Route` Component , and `Navigate` Component , `Route` has `path` , and `Navigate` has `to`
+
+```javascript
+<Route path="/redirect" element={ <Navigate to="/not-found" /> } />
+```
 

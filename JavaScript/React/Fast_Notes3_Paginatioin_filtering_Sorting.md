@@ -1,5 +1,32 @@
 ## Pagination ,Filtering & Sorting
 
+### Using Function as the filed value of an Object , 
+
+> an object in javascript *has* `key : value` as you know .
+>
+> and we can use `function` , as the value of an Object property , like bellow :arrow_double_down:
+
+```javascript
+const arash = {
+    name:'samandar',
+    family:'aghashahi',
+    content:function() {
+        console.log('good job');
+    }
+}
+// IMPORTAT : It Can Be Written Like Bellow Too :
+columns = [
+    {path:'title',label:'Title',content:movie => <Link to={`/movies/${movie._id}'}>{movie.title}</Link>
+    {path:'genre',label:'Genres'},
+    {								
+        key:'Like',
+        content: movie => <Like liked={movie.like} onClick{() => this.props.onLike(movie)}/>
+    }
+]
+// and now we can also render the third object in this array , and use something like "map"
+// in it .
+```
+
 ### Using 'lodash' library
 
 > lodash can convert a number to an array , like bellow :
@@ -285,6 +312,17 @@ export default class MoviesTable extends Component {
         {key:'delete',
         content:movie => (<button onClick={() => this.props.onDelete(movie)} className="btn btn-danger btn-sm">Delete</button>) }
     ]
+    //------------------------- NOTE -----------------
+        the above array of objects , would go in a `map`
+        and would need a method like 'renderCell(item,column)'
+		renderCell = (item,column) => { // this render cell is inside two maps one iterate over item ( which is movie ) , and one iterates over array of Objects , which is above `columns`
+        if(column.content) {
+            return column.content(item); // passes the item which is movie , to the content of column . which you can see both in the above array , which is column (a)
+        } else {
+            return _.get(item,column.path);
+        }
+    }
+    //-------------------------End Note---------------
     render() {
         const {movies, onDelete, onLike, sortColumn, onSort} = this.props;
         return (

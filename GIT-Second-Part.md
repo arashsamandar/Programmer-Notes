@@ -42,3 +42,32 @@ git checkout my-new-branch
 git push -u origin my-new-
 ```
 
+### Deleting a branch
+
+> you can delete a branch with bellow command :
+
+```
+git branch -d your-branch
+```
+
+### git merge
+
+> after you created several `branch` , and commiting on them , they are infact branches beside `main` or `master` branch .
+>
+> so first go to the `main` branch with
+>
+> ```
+> git checkout main
+> ```
+>
+> after that merge with that branch , when we are in main branch , merge main with newest branch and make it up to date with bellow code :
+>
+> ```
+> git checkout main
+> // or
+> git checkout -b main
+> // then
+> gi
+> ```
+>
+> 
