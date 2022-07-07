@@ -70,4 +70,28 @@ git branch -d your-branch
 > gi
 > ```
 >
-> 
+
+---------
+
+#### Using Git Tag
+
+> you can use `git tag` to create and add a `tag` to your `commit` , like so :arrow_double_down:
+
+```
+---A---B---C---o---o---o   master
+
+git checkout master
+git checkout A~0
+git add path/to/file
+git commit --date='whenever'
+git tag ,new-commit -m'delete me later'
+git checkout -
+git rebase --onto ,new-commit A
+git tag -d ,new-commit
+
+---A---N                      (was ",new-commit", but we delete the tag)
+        \
+         B'---C'---o---o---o   master
+```
+
+## Learn what is the difference between `Git pull` & `Git Clone` & maybe `Git rebase`
