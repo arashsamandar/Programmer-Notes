@@ -1,3 +1,32 @@
+## Fixing `phpmyadmin` error & bug
+
+In the new MySQL client, if the password is left empty while installing then, it is based on the `auth_socket` plugin.
+
+The correct way is to log in to MySQL with the `sudo` privilege.
+
+```none
+sudo mysql -u root -p
+```
+
+And then updating the password using:
+
+```none
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new-password';
+```
+
+Once this is done, *stop and start* the MySQL server.
+
+```none
+sudo service mysql stop
+sudo service mysql start
+```
+
+For complete details, you can refer to [this link](https://www.percona.com/blog/2016/03/16/change-user-password-in-mysql-5-7-with-plugin-auth_socket/).
+
+> more at bellow address :
+>
+> https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost?noredirect=1&lq=1
+
 ## NOTE : Removing an application
 
 > some times there is an older version of the app which is conflicting with the new one you are trying to install
@@ -50,3 +79,21 @@ sudo apt install nvidia-340
 > everything after `1.2.3.4 bs.studycoder.com`
 
 > you can delete everything after it.
+
+----------
+
+-------------------
+
+### Changing `PHP` version in ubuntu
+
+> to show the version simply type :
+>
+> ```
+> sudo apt show php
+> // or
+> sudo apt show php -a
+> ```
+
+> more at bellow address :
+>
+> https://www.tecmint.com/install-different-php-versions-in-ubuntu/
