@@ -101,3 +101,39 @@ sudo apt install nvidia-340
 > more at bellow address :
 >
 > https://www.tecmint.com/install-different-php-versions-in-ubuntu/
+
+### Changing permission in ubuntu
+
+> Remember : changin `ownership` with `chown` , changing the permission with `chmod`
+>
+> you can pass the permission to user , using bellow code :
+>
+> ```
+> sudo chown -R $USER:$USER /var/www/     // changing the ownership
+> ```
+
+> Assign execute permission with :
+>
+> ```
+> sudo chmod +X /usr/local/bin/composer   // changing the permission
+> ```
+
+> change the owner ship with :
+>
+> ```
+> sudo chown -R www-data:www-data /var/www/html/laravelapp
+> ```
+>
+> change the permission with :
+>
+> ```
+> sudo chmod -R 775 /var/www/html/laravelapp/storage
+> ```
+
+### Find the Location of a Package
+
+> run bellow commad :
+>
+> ```
+> which "npm"
+> ```
