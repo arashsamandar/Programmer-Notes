@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 ## Fixing `phpmyadmin` error & bug
 
 In the new MySQL client, if the password is left empty while installing then, it is based on the `auth_socket` plugin.
@@ -136,4 +140,20 @@ sudo apt install nvidia-340
 >
 > ```
 > which "npm"
+> ```
+
+### Getting `Permission Denied`
+
+> if you get permission error when running `npm start` 
+>
+> then `Delete` the `node_modules` folder and run bellow command :
+>
+> ```
+> npm install react-scripts --save
+> ```
+>
+> after this you can run with :
+>
+> ```
+> npm start
 > ```
