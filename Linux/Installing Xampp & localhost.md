@@ -35,6 +35,8 @@ $ sudo apt install net-tools
 > ```
 > sudo service mysql restart
 > 
+> sudo service apache2 stop
+> 
 > sudo systemctl reload apache2
 > 
 > sudo systemctl start mysql.service   // or for starting the services
@@ -57,3 +59,64 @@ $ sudo apt install net-tools
 > ```
 > sudo chown -R $USER:$USER /var/www
 > ```
+
+## Enable Debug for `apache`
+
+> to see debug information for `apache` . user bellow command
+
+```
+tail -f /var/log/apache2/error.log
+```
+
+### Reconfiguring `PhpMyAdmin`
+
+```
+sudo dpkg-reconfigure phpmyadmin
+```
+
+### Delete `Phpmyadmin`
+
+```
+apt purge phpmyadmin -y
+```
+
+--------------------
+
+### changing Permissions
+
+```
+chmod 755 -R /var/www/html
+```
+
+### Changing `PHP` Version
+
+> to change the default `php` for server use bellow commad :
+
+```
+sudo update-alternatives --set php /usr/bin/php7.0
+```
+
+> alternatively you may use :
+
+```
+sudo update-alternatives --config php
+```
+
+## Remove & ReInstall a Service in Ubuntu
+
+```
+sudo apt-get --purge remove apache2
+sudo apt-get autoremove
+sudo apt-get install apache2
+sudo /etc/init.d/apache2 restart
+```
+
+------------------
+
+---------------
+
+### Path to `html` directory
+
+```
+sudo nano /var/www/html/test.php
+```

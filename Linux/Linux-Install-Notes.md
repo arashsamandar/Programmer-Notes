@@ -52,6 +52,10 @@ sudo apt install nvidia-340 xorg-modulepath-fix
 > ubuntu-drivers devices
 > // you can also use :
 > sudo lshw -c display
+> // remove Nvidia Drivers with
+> sudo apt-get remove --purge nvidia-*
+> // also remove ppa
+> sudo apt-get install ppa-purge
 > ```
 
 > if above command didn't work use try bellow install command
