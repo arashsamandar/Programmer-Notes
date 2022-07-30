@@ -385,4 +385,8 @@ https://stackoverflow.com/questions/31206186/call-to-undefined-function-simplexm
 > ls
 > ```
 >
-> 
+> to edit the Desktop applications open the :
+>
+> ```
+> sudo nautilus ~/Desktop
+> ```

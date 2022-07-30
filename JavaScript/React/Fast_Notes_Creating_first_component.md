@@ -40,7 +40,7 @@ class Counter extends Component {
     state = {
         count:0,
     };
-    styles = { // here we go , Note : remember the styles are camelcase
+    styles = { // Note : Style should be CamelCase
       fontSize:10,
       fontWeight:bold,
     };
@@ -75,7 +75,7 @@ class Counter extends Component {
         return (
         <React.Fragment> // bellow
             <span className="btn btn-secondary btn-sm m-2">{this.formatCount()}</span>
-            <button style={{backgroundColor:''}} className="btn btn-primary">Increment</button>
+            <button style={{backgroundColor:'red'}} className="btn btn-primary">Increment</button>
         </React.Fragment>
         )
     }
