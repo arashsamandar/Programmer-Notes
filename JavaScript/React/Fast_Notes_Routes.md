@@ -91,7 +91,7 @@ import Dashboard from './components/Dashboard';
 import Products from './components/Products';
 import Posts from './components/Posts';
 import Home from './components/home';
-import {Route, Navigate,Link} from 'react-router-dom';
+import {Route, Navigate,Link, BrowserRouter} from 'react-router-dom';
 import React,{Component} from "react";
 import ProductDetails from "./components/productDetails";
 import {Routes} from "react-router";
@@ -99,6 +99,7 @@ import {Routes} from "react-router";
 class App extends Component {
     render() {
         return (
+            <BrowserRouter>
             <div>
                 <Link to="/">Home</Link><br></br>
                 <Link to="/posts">Posts</Link><br></br>
@@ -114,6 +115,7 @@ class App extends Component {
         IMPORTANT : <Route path="/redirect" element={ <Navigate to="/not-found" /> } />
                     </Routes>
             </div>
+			</BrowserRouter>
         )
     }
 }

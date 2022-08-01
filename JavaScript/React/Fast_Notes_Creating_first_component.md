@@ -122,8 +122,10 @@ export default Counter;
 
 > or the result of bellow code :arrow_double_down:
 
-```javasc
+```jsx
 true && 'Hi' && 1  // would return the 1
+// evaluate the condition and then returns or not returns the value , like bellow :
+(10 > 9.45) && 'yes , ten is larger than nine'
 ```
 
 ## handling Events
@@ -145,8 +147,7 @@ class Counter extends Component {
         return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
     }
     formatCount() {
-        const {count} = this.state;
-        return count === 0 ? 'Zero' : count;
+        return this.state.count === 0 ? 'Zero' : this.state.count;
     }
     getBtnClasses() {
         let classes = "btn btn-sm m-2 btn-";
@@ -192,7 +193,7 @@ handleIncrement = (product) => {
     this.setState({count:this.state.count + 1});
 }
 // and in the render method when we call this function
-// you should remember that we call an instance of the function , like : this.handleIncrement
+// you should remember that we use this function like bellow,because it dosn't have return
 <button onClick={this.handleIncrement}>Example</button>
 // so we write it like bellow ( when we want to pass an Argument )
 <button onClick={() => this.handleIncrement(product)}
