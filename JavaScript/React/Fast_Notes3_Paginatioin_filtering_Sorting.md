@@ -1,6 +1,8 @@
+[TOC]
+
 ## Pagination ,Filtering & Sorting
 
-### Using Function as the filed value of an Object , 
+### Using Function as the field value of an Object , 
 
 > an object in javascript *has* `key : value` as you know .
 >
@@ -32,7 +34,6 @@ columns = [
 > lodash can convert a number to an array , like bellow :
 
 ```javascript
-import React,{Component} from "react";
 import _ from 'lodash';
 
 const Pagination = (props) => {
@@ -60,7 +61,7 @@ const Pagination = (props) => {
 ```javascript
 export default class Movies extends Component {
     state = {};
-    handlePageChange = (page) => {
+    handlePageChange = (page) => { // this is the class that handles the change
         console.log(page);
     }
     render() {
@@ -72,10 +73,10 @@ export default class Movies extends Component {
     }
 }
 // and we pass the argument in the child ( Pagination ) Component
-const Pagination = (props) => {
+const Pagination = ({page,onPageChange}) => {
     return (
     	<div>
-        	<a onClick={() => onPageChange(page)}>example</a>
+        	<button onClick={() => onPageChange(page)}>example</button>
         <div>
     )
 }
@@ -118,9 +119,10 @@ export default ListGroup;
 > now here we use a `selectedGenre` and we pass it as `selectedItem` , like bellow code :
 
 ```javascript
+import {getMovies,getGenere} from './movieService.js';
 state = {
-    movies:[],
-    genres:[],
+    movies:getMovies(),
+    genres:getGenre(),
     currentPage:1,
     pageSize:4,
 }
@@ -131,7 +133,7 @@ handleGenreSelect = (genre) => {
 <div className="col-2">
      <ListGroup items={this.state.genres}
      onItemSelect={this.handleGenreSelect}
-     selectedItem={this.state.selectedGenre} // this line of code came out of nowhere .
+     selectedItem={this.state.selectedGenre} // this line of code came from this.setState
      />
  </div>
 ```
@@ -275,7 +277,7 @@ import _ from 'lodash';
 class TableBody extends Component{
     renderCell = (item,column) => {
         if(column.content) { // if column has a content
-            return column.content(item) // it returns a function , but what function , take a look at the next code .
+            return column.content(item) // because it is a function, we pass item to function
         } else {
             return _.get(item,column.path);
         }
@@ -284,7 +286,7 @@ class TableBody extends Component{
         const { data,columns } = this.props;
         return (
             <tbody>
-            {data.map(item => ( // item is a movie , and such we have column.content(item) in the next chunck of code .
+            {data.map(item => ( // item is a movie
                 <tr>
                     {columns.map(column => (
                         <td>{this.renderCell(item,column)}</td>
@@ -307,8 +309,7 @@ export default class MoviesTable extends Component {
         {path:'genre.name',label:'Genre'},
         {path:'numberInStock',label:'Stock'},
         {path:'dailyRentalRate',label: 'Rate'},
-        {key:'like',  // bellow is a function that we saw in the above code return column.content(item)
-         content: movie => <Like liked={movie.liked} onClick={() => this.props.onLike(movie)}/>},
+        {key:'like', content: movie => <Like liked={movie.liked} onClick={() =>         			 this.props.onLike(movie)}/>},
         {key:'delete',
         content:movie => (<button onClick={() => this.props.onDelete(movie)} className="btn btn-danger btn-sm">Delete</button>) }
     ]
@@ -381,7 +382,7 @@ class TableBody extends Component{
         }
     }
     createKey = (item,column) => {
-        return item._id + (column.path || column .key)
+        return item._id + (column.path || column.key)
     }
     render() {
         const { data,columns } = this.props;
@@ -390,7 +391,7 @@ class TableBody extends Component{
             {data.map(item => (
                 <tr key={item._id}>
                     {columns.map(column => (
-                        <td key={this.createKey}>{this.renderCell(item,column)}</td>
+                        <td key={this.createKey()}>{this.renderCell(item,column)}</td>
                     ))}
                 </tr>
             ))}
@@ -446,15 +447,17 @@ export default TableBody;
 ## Object Desturacting in methods
 
 > for example if we have too many operations for getting several data , we can `cut` them and `put` them in a `method` , like `bellow` :
+>
+> unique Specification that JS has , is that a function can return multiple Values , like bellow , and when we know it , we get it in multiple Variables , like bellow :
 
 ```javascript
 getPagedData = () => {
-        const {length:count} = this.state.movies;
+        const {length,count} = this.state.movies;
         const {pageSize,currentPage,movies,selectedGenre,sortColumn} = this.state;
         const filtered = selectedGenre && selectedGenre._id ? (movies.filter(m => m.genre._id === selectedGenre._id)) : movies;
         const sorted = _.orderBy(filtered,[sortColumn.path],[sortColumn.order])
         const moviesNumber = paginate(sorted,currentPage,pageSize);
-        return {totalCount:filtered.length,moviesNumber,sorted}
+        return {totalCount,filtered.length,moviesNumber,sorted}
     }
 // and now that we know we return an object , we can get it like , bellow :
 const {moviesNumber,totalCount,sorted} = this.getPagedData();

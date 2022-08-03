@@ -6,14 +6,19 @@
 > document.getElementById('folan').value // this way of getting the value of input forms is wrogn .
 > ```
 >
-> 
 
-> for getting the inputs of a ( for example a textbox ) , __we shall convert that input field or input text__ to a `controlled input` , controlled input fileds are like controlled Components , they don't have they value , they get there value from the `props` , and they `raise` events .
+> for getting the inputs of ( for example a textbox ) , __we shall convert that input field or input text__ to a `controlled input` , controlled input fileds are like controlled Components , they don't have there value , they get there value from the `props` , and they `raise` events .
 
 > like bellow code :arrow_double_down:
 
 ```javascript
 // if you don't get it , read the next chunk of code .
+state = {
+    account:{
+        username:'',
+        password:'',
+    }
+}
 handleChange = ({currentTarget:input}) => {
         const account = {...this.state.account};
         account[input.name] = input.value;
@@ -89,8 +94,6 @@ export default LoginForm;
 > Goes To bellow :arrow_double_down:
 
 ```javascript
-import React,{Component} from "react";
-
 const Input = ({name,label,value,onChange}) => {
     return (
         <div className="form-control">

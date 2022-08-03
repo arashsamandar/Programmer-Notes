@@ -3,9 +3,10 @@
 ```javascript
 import React,{Component} from "react";
 import Counter from "./counter";
+
 export default class Counters extends Component{
     state={
-        counters:[
+        counters:[ // is an array of JS objects
             {id:1,value:0},
             {id:2,value:0},
             {id:3,value:0},
@@ -122,7 +123,7 @@ export default class Counters extends Component{
 
 ```javascript
 <Counter key={counter.id}>
-    <h1>Title</h1> // now this is a prop.childeren
+    <h1>Title</h1> // now thiss is a prop.childeren
 </Counter>
 // access it in the other Component with
 {this.props.childeren} // Note that it is not a function and is declared like this.props.childeren
@@ -130,7 +131,7 @@ export default class Counters extends Component{
 
 ### Difference beween props and state
 
-> props include data that we give to a component whearas state includes data that is local or private to that component ( so other component can't reach it )
+> props include data that we pass to a component whearas state includes data that is local or private to that component ( so other component can't reach it )
 
 ### Raising and handling `Event`
 
@@ -244,9 +245,9 @@ render() {
 >
 > so the controller wouldn't have values for itself __we call it a Controlled component__ , and it gets its value only by `props` , and raises events by calling the parent Component .
 
-![image-20220624213615179](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220624213615179.png)
+![image-20220624213615179](Fast_Notes2.assets\image-20220624213615179.png)
 
-![image-20220624220813047](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220624220813047.png)
+![image-20220624220813047](Fast_Notes2.assets\image-20220624220813047.png)
 
 > so we take out the `Counter` __state__ , we remove it thus all the datas should be in the Counters and Counter like in the first image , only raises __Events__ , all data and manipulation of data is in the `Counters` Component .
 >
@@ -268,13 +269,13 @@ export default class Counters extends Component{
         ]
     }
     handleDelete = (counterId) => {
-        const counters = this.state.counters.filter(c => c.id !== counterId);
+        const counters = this.state.counters.filter(counter => counter.id !== counterId);
         this.setState({counters});
     }
     handleReset = () => {
-        const counters = this.state.counters.map(c => {
-            c.value = 0;
-            return c;
+        const counters = this.state.counters.map(counter => {
+            counter.value = 0;
+            return counter;
         });
         this.setState({counters});
     }
@@ -336,15 +337,15 @@ export default Counter;
 
 ## Multiple Components In `Sync`
 
-> earlear whe had bellow :
+> earlear we had bellow :
 
-![image-20220625125416818](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220625125416818.png)
+![image-20220625125416818](Fast_Notes2.assets\image-20220625125416818.png)
 
 > so the Counters that has the states is the parent of Counter , and we pass data to it via `props`
 
 > no we create another component named `Navbar` , so to get that in sync , we lift the state one stage up , like bellow :
 
-![image-20220625125549159](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220625125549159.png)
+![image-20220625125549159](Fast_Notes2.assets\image-20220625125549159.png)
 
 > this is the navbar code :
 
@@ -516,7 +517,7 @@ export default class Counters extends Component{
 
 > phases that the Component Goes Through :
 
-![image-20220626134906565](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220626134906565.png)
+![image-20220626134906565](Fast_Notes2.assets\image-20220626134906565.png)
 
 > you see that `rener` is presetnt almost in all of the Cycles , render is called when the `state` changes , or when we define new `props`
 
@@ -551,13 +552,13 @@ render() {
 
 > > Note : whever the state of a component is changed , it would be rendered alongside all of its childeren
 
-![image-20220626140702384](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220626140702384.png)
+![image-20220626140702384](Fast_Notes2.assets\image-20220626140702384.png)
 
 > also , `componentDidUpdate` happens > whenever the state changes or we get a new props , in above image we clicked the Increment and that called the render method , and all of its children would render .
 
 > __componentDidUpdate__ is also a good place that we understand an state or props is changed , and we can call the `Ajax` call .
 
-![image-20220626141244048](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220626141244048.png)
+![image-20220626141244048](Fast_Notes2.assets\image-20220626141244048.png)
 
 ## An Odd Example !
 
@@ -567,7 +568,7 @@ render() {
 >
 > and its action is to be full (blacked) or empty , answers to click .
 
-![image-20220626191339560](D:\Programming Notes\JavaScript\React\Fast_Notes2.assets\image-20220626191339560.png)
+![image-20220626191339560](Fast_Notes2.assets\image-20220626191339560.png)
 
 ```javascript
 import React,{Component} from "react";
@@ -613,7 +614,7 @@ export default class Like extends Component{
                         </tr>
 ```
 
-> as you can see , the movies array does not have any state or vnamed liked ! but any way we have this peace of code
+> the movies array does not have any state or named liked ! but any way we have this peace of code
 >
 > ```javascript
 > <Like liked={movie.liked} onClick={() => this.handleLike(movie)}/>

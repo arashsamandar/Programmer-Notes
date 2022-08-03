@@ -29,7 +29,7 @@ root.render(
 )
 ```
 
-### How to change the Style of an element with `style` object
+### How to change the Style of an element with `styles` object
 
 > we can use bellow code :arrow_double_down:
 
@@ -215,7 +215,7 @@ import React,{Component} from "react";
 import {deleteMovie, getMovies} from "../services/fakeMovieService";
 
 
-export class Movies extends Component {
+export default class Movies extends Component {
     state = {
         movies:getMovies(),
     };
