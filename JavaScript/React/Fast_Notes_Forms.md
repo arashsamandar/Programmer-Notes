@@ -119,8 +119,6 @@ export default Input;
 
 ```javascript
 // right after the above className="form-control" we would have :
-import React,{Component} from "react";
-
 const Input = ({name,label,value,onChange}) => {
     return (
         <div className="form-control">
@@ -142,14 +140,14 @@ export default Input;
                 <Input
                     label="Username"
                     name="username"
-                    value={account.username}
+                    value={this.state.account.username}
                     onChange={this.handleChange}
                     error={this.state.errors.username} // this line for username
                 />
                 <Input
                     label="Password"
                     name="password"
-                    value={account.password}
+                    value={this.state.account.password}
                     onChange={this.handleChange}
                     error={this.state.errors.password} // this line for password
                 />
@@ -174,15 +172,15 @@ export default Input;
 > we delete a `property of an object` with `delete` , like bellow code :
 
 ```javascript
-validateProperty = (input) => {
+validateProperty = ({currentTarget:input}) => {
         if(input.name === 'username') {
             if(input.value.trim() === '') return 'Username is required';
         }
         if(input.name === 'password') {
             if(input.value.trim() === '') return 'Password is required';
         }
-
     }
+
     handleChange = ({currentTarget:input}) => {
         const errors = {...this.state.errors};
         const errorMessage = this.validateProperty(input);
@@ -203,6 +201,10 @@ npm i joi-browser // install it as an npm , so you can use it in your project li
 import Joi from 'joi-browser';
 
 // then in the LoginForm Component we would have :
+state = {
+    username:'',
+    password:'',
+}
 schema : {
     username: Joi.string().required;
     password: Joi.string().required;
@@ -213,7 +215,7 @@ validate = () => {
     // bellow has nothing to do with the above code.
         const errors = {};
         if(this.state.account.username.trim() === '') {
-            this.state.errors.username = 'Username is required';
+            errors.username = 'Username is required';
         }
         if(this.state.account.password.trim() === '') {
             errors.password = 'Password is required';
@@ -222,7 +224,7 @@ validate = () => {
     															 // to the Joi .
     	// but it is important , take a look .
     }
-// and it is going to be used in bellow code , ( to show error when typing ( empty ))
+// and it is going to be used in bellow code , ( to show error when text field is ( empty ))
 handleChange = ({currentTarget:input}) => {
         const errors = {...this.state.errors};
         const errorMessage = this.validateProperty(input);
@@ -248,7 +250,7 @@ for(let item of items) {
 > now we iterate over the `Object` that `Joi` Creates , like bellow :
 
 ```javascript
-validte = () => {
+validate = () => {
     const result = Joi.validate(this.state.account,this.schema,{abortEearly:false});
     if(!result.error) return null;
     const errors = {};
@@ -269,14 +271,14 @@ handleSubmit = (e) => {
                 <Input
                     label="Username"
                     name="username"
-                    value={account.username}
+                    value={this.state.account.username}
                     onChange={this.handleChange}
                     error={this.state.errors.username}
                 />
                 <Input
                     label="Password"
                     name="password"
-                    value={account.password}
+                    value={this.state.account.password}
                     onChange={this.handleChange}
                     error={this.state.errors.password}
                 />
@@ -417,9 +419,9 @@ class Form extends Component{
         return errors;
     };
 
-    validateProperty = ({ name, value }) => {
-        const obj = { [name]: value };
-        const schema = { [name]: this.schema[name] };
+    validateProperty = (input) => {
+        const obj = { [input.name]: input.value };
+        const schema = { [input.name]: this.schema[input.name] };
         const {error} = Joi.validate(obj, schema);
         return error ? error.details[0].message : null;
     };
