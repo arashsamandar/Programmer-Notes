@@ -120,3 +120,11 @@ sudo /etc/init.d/apache2 restart
 ```
 sudo nano /var/www/html/test.php
 ```
+
+## PHP Extensions
+
+> just run `php --ini`
+
+## php.ini file
+
+> is in `/etc/php/7.4/cli` , just run `php --ini` and then come one folder up , and you should find it there .

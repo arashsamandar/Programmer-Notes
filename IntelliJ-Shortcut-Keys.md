@@ -1,5 +1,7 @@
 ## CTRL + E
 
+> https://faradars.org/courses/introduction-to-build-e-commerce-website-in-laravel-fvwb9909
+>
 > Brings Up All the last Modified Files ( and You can select between them )
 
 ![image-20201030110808075](D:\Programming Notes\IntelliJ-Shortcut-Keys.assets\image-20201030110808075.png)
