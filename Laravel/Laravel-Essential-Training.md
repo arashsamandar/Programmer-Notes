@@ -23,7 +23,7 @@ class TestController extends Contorller {
 }
 ```
 
-### Best way to Save Data with array :
+### Best way to Save Data with array OR sending it to View with $data
 
 ![Selection_003](./assets/Selection_003.png)
 
