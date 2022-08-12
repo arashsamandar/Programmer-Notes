@@ -126,3 +126,87 @@ return view('index')->with('petition',$petition);
 > }
 > ```
 
+## Create method
+
+```php
+public function store(Request $request)
+{
+     $petition = Petition::create($request->only([
+         'title','description','category','auther','signees',
+     ]));
+     return new PetitionResource($petition);
+}
+```
+
+-----------
+
+----------------
+
+# The Entire PetitionController Codes
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Resources\PetitionCollection;
+use App\Http\Resources\PetitionResource;
+use App\Models\Petition;
+use Illuminate\Http\Request;
+
+class PetitionController extends Controller
+{
+    public function index()
+    {
+        return new PetitionCollection(Petition::all());
+    }
+
+
+    public function store(Request $request)
+    {
+        $petition = Petition::create($request->only([
+            'title','description','category','auther','signees',
+        ]));
+        return new PetitionResource($petition);
+    }
+
+
+    public function show(Petition $petition)
+    {
+        return new PetitionResource($petition);
+    }
+
+
+    public function update(Request $request, Petition $petition)
+    {
+        $petition->update($request->only([
+            'title','description','category','auther','signees'
+        ]));
+        return new PetitionResource($petition);
+    }
+
+
+    public function destroy(Petition $petition)
+    {
+        $petition->delete();
+        return response()->json(null,204);
+    }
+}
+
+```
+
+# Send Back The Response In A Different Fasion
+
+> for example for the `index` method , instead of returning the `new ResourceCollection($petition)` we use the `response` , like bellow :
+>
+> ```php
+> public function index()
+>     {
+>         return response()->json(new PetitionCollection(Petition::all()),200);
+>     	// or you could use HTTP Response Instead of the `200` code , like bellow :
+>     	return response->json(new 	ResourceCollection(Petition::all()),
+>                               Response::HTTP_OK)
+>     }
+> ```
+>
+> 
