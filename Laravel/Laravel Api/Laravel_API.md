@@ -209,4 +209,13 @@ class PetitionController extends Controller
 >     }
 > ```
 >
+
+### Important
+
+> How to get message from a protected route group
+>
+> ```
+> in the `Postman` , you must send Header : Accept > application/json
+> ```
+>
 > 
