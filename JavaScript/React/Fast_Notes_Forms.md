@@ -294,7 +294,7 @@ handleSubmit = (e) => {
                 onChange={onChange}
                 type="text"
                 className="form-control" />
-            {error && <div className="alert alert-danger">{error}</div>} // here we show it
+            {error && <div className="alert alert-danger">{error}</div>} // here we show this
         </div>
 ```
 
