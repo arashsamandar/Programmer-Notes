@@ -35,15 +35,15 @@ class App extends Component {
                     <Route path="/products" element={<Products />}/>
                     <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path="/posts" element={<Posts />}/>
-                </Routes>
-            </React.Fragment>
+                <Routes>
+            <React.Fragment>
         )
     }
 }
 export default App;
 ```
 
-> pay attention that you can use `a` with `href` , but never sround a Route with `a` , this would not work , but easier , you can write you `<a href="/home">go home<a> in a free space
+> pay attention that you can use `a` with `href` , but never seround a Route with `a` , this would not work , but easier , you can write you `<a href="/home">go home<a> in a free space
 
 ```javascript
 import Dashboard from './components/Dashboard';
@@ -113,9 +113,9 @@ class App extends Component {
                     <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path="/posts" element={<Posts />}/>
         IMPORTANT : <Route path="/redirect" element={ <Navigate to="/not-found" /> } />
-                    </Routes>
-            </div>
-			</BrowserRouter>
+                    <Routes>
+            <div>
+			<BrowserRouter>
         )
     }
 }
@@ -433,7 +433,7 @@ export default function GetNav(props) {
 
     return (
         <div>
-            <button onClick={handleClick}>{props.address}</button>
+            <button onClick={this.handleClick}>{props.address}</button>
         </div>
     );
 }

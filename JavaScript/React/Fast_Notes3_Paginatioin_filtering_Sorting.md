@@ -37,7 +37,7 @@ columns = [
 import _ from 'lodash';
 
 const Pagination = (props) => {
-    const {itemsCount,pageSize} = props;
+    const {itemsCount,pageSize} = this.props;
     const pageCount = itemsCount / pageSize;
     const pages = _.range(1,pageCount + 1);
     return (
@@ -96,7 +96,7 @@ const ListGroup = (props) => {
                 <li key={item[valueProperty]}
                     className="list-group-item">
                     {item[textProperty]}
-                </li>
+                <li>
             ))}
         </ul>
     )
