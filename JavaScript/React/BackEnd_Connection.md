@@ -149,21 +149,151 @@ handleDelete = async (post) => {
 > }
 > ```
 >
-> 
 
+## Exception Handling
 
+> every `exception` object , like above `catch( exp )` > has two properties :
+>
+> - exp.request
+> - exp.response
 
+> we don't get a `exp.response` , it the server is down or something out of ordinary has happened . the `exp.request` property also would be set , if we could send the `submit` submit our form .
 
+## Like Bellow :
 
+```javascript
+try {
+    // try something
+} catch (exp) {
+    if(exp.response && exp.response.status === 404 ) alert('post is not found');
+    else { console.log('Logging the error : ',exp); alert('unexpected error occoured'); }
+}
+```
 
+### Using `Axios Interceptors` :
 
+```javascript
+axios.interceptors.response.use("success function","error function"); // like bellow code :
+//|----------------------------------------------------------------------------------------
+import axios from 'axios';
+import './bootstraCDN.css';
+import React,{Component} from 'react';
 
+axios.interceptors.response.use(null,error => {
+   console.log("INTERCEPTOR CALLED");
+   return Promise.reject(error); // we use it to pass to the Catch.
+});
+export default class App extends Component {
+	state = {
+        posts=[],
+    }
+    render() {
+        return (
+        	<div>
+            	Hello Mom
+            <div>
+        )
+    }
+}
+```
 
+### Better Way Is Bellow `To Hanlde Unexpected OR Expected` Error :
 
+> NOTE :musical_note: The Good Thing With Bellow Code is that *__You Write It Once , And Thats All__*
 
+```javascript
+import React,{Component} from 'react';
 
+axios.interceptors.response.use(null,error => {
+   const expectedError = if(error.response && error.response.status >= 400) &&
+       												error.response.status < 500 )
+                                                    
+   		if(expectedError) return Promise.reject(error);
+   		else {console.log("Logging the error : ",ex);	alert('unexpected error')};}
+});
+export default class App extends Component {
+    state = {};
+    render() {
+        return (
+        	<div>
+            	Hello Mon
+            <div>
+        )
+    }
+}
+```
 
+> or you could just pass the `rejected promise` like :  `return Promise.reject(error)` , and catch it in your catch block and show it which ever you see suitable .
 
+## Exporting The __Interceptor__ To Another Module :
+
+> we export it to another module , so that our App would not be poluted , & also we can use it in another modules
+>
+> like bello :
+
+```javascript
+import axios from 'axios';
+
+axios.interceptors.response.use(null,error => {
+   const expectedError = if(error.response && error.response.status >= 400) &&
+       												error.response.status < 500 )
+                                                    
+   		if(expectedError) return Promise.reject(error);
+   		else {console.log("Logging the error : ",ex);	alert('unexpected error')};}
+});
+
+export default {
+    get: axios.get,
+    post: axios.post,
+    put: axios.put,
+    delete: axios.delete
+}
+```
+
+> now just import this file at the top of your App module : :smile: *Like What I Do Bellow*
+
+```javascript
+import http from './services/folan.js';
+
+// now instead of the axios.get and .... , we can write bellow :
+
+await http.get('https://www.google.com');  // because we exported all of the axios actions
+
+export default {
+    get: axios.get,
+    put: axios.put,
+    post: axios.post,
+    delete: axios.delete
+}
+```
+
+## Extracting A __Config Module__ :
+
+> you can add a new file with the __.json__ extension , and remove the *Long URL* you have in the above files to connect to jsoneplaceholder.com/posts , we can extract it from there , *and put it to our __config.json__ file* like bellow :
+
+```json
+{
+    "apiEndPoint":"https://www.jsonplaceholder.typiconde.com/posts"
+}
+// note : we can have several other values added here , but for now we have the above .
+```
+
+> and then we import it to our module like so :
+
+```javascript
+import React,{Component} from 'react';
+import config from './config.json';
+export default class Arash extends Component {
+    handleTest = async () => {
+        const promise = await http.get(config.apiEndPoint); // here we use it like this line.
+    }
+    render() {
+        return (
+        	<div>Hello Mom<div>
+        )
+    }
+}
+```
 
 
 
