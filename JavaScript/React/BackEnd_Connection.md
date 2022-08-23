@@ -157,7 +157,7 @@ handleDelete = async (post) => {
 > - exp.request
 > - exp.response
 
-> we don't get a `exp.response` , it the server is down or something out of ordinary has happened . the `exp.request` property also would be set , if we could send the `submit` submit our form .
+> we don't get a `exp.response` , if the server is down or something out of ordinary has happened . the `exp.request` property also would be set , if we could send the `submit` submit our form .
 
 ## Like Bellow :
 
@@ -197,7 +197,7 @@ export default class App extends Component {
 }
 ```
 
-### Better Way Is Bellow `To Hanlde Unexpected OR Expected` Error :
+### Better Way Is Bellow  : `To Hanlde Unexpected OR Expected` Error :
 
 > NOTE :musical_note: The Good Thing With Bellow Code is that *__You Write It Once , And Thats All__*
 
@@ -223,7 +223,7 @@ export default class App extends Component {
 }
 ```
 
-> or you could just pass the `rejected promise` like :  `return Promise.reject(error)` , and catch it in your catch block and show it which ever you see suitable .
+> or you could just pass the `rejected promise` like :  `return Promise.reject(error)` , and catch it in your catch block and show it which ever you see fit .
 
 ## Exporting The __Interceptor__ To Another Module :
 
@@ -239,7 +239,7 @@ axios.interceptors.response.use(null,error => {
        												error.response.status < 500 )
                                                     
    		if(expectedError) return Promise.reject(error);
-   		else {console.log("Logging the error : ",ex);	alert('unexpected error')};}
+   		else {console.log("Logging the error : ",error);	alert('unexpected error')};}
 });
 
 export default {
@@ -295,5 +295,41 @@ export default class Arash extends Component {
 }
 ```
 
+## Adding Toas To React
 
+> to add toast to react , first you must install it like bellow :
+>
+> ```
+> npm install react-toastify
+> ```
+>
+> now import the following two lines
+>
+> ```javascript
+> import {ToastContainer,toast} from 'react-toastify';
+> import 'react-toastify/dist/ReactToastify.css'
+> 
+> // then import the component named <ToastContainer /> in your jsx
+> 
+> export default class Arash extends Component {
+>     toastHandler = () => {
+>         toast.error('hello error');
+>         // you can use : info , warn , success , error
+>         // for showing info use bellow code :
+>         toast('this is an info rainbow');
+>     }
+>     render() {
+>         return (
+>         	<div>
+>             	<ToastContainer />
+>             	<button onClick={this.toastHandler}
+>             <div>
+>         )
+>     }
+> }
+> ```
+>
+> 
+>
+> 
 
