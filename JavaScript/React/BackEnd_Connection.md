@@ -329,7 +329,19 @@ export default class Arash extends Component {
 > }
 > ```
 >
-> 
->
-> 
 
+## MongoDB
+
+> to install `mongoDB` for `linux ubuntu 22.04` , go to this link : https://wiki.crowncloud.net/?How_to_Install_Latest_MongoDB_on_Ubuntu_22_04 ,
+>
+> also : you may watch the `React With Mosh -> backend` section -> lesson 154 .
+>
+> it is easy , first you download and install the server *it must be in the `atlas` section of the site* , and its name is `Mongod or Mongo Daemen` , then you `start` and `enable` it , so it runs in the background and opens a `port`.
+>
+> Note : it may needs you to create a folder for it to stores it files .
+>
+> after that you install the `Client` to access it , its name is `MongoDB Compass` .
+>
+> and you are done :smile:
+>
+> very simple :checkered_flag:
