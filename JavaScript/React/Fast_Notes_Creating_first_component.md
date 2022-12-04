@@ -109,6 +109,7 @@ class Counter extends Component {
         return (
         <React.Fragment>
             <ul>
+            // evaluates the first and returns the second ( if first is true )
                 {this.state.tags.length === 0 && 'please create a new tag'} // returns the text
                 {this.renderTags()}
             </ul>

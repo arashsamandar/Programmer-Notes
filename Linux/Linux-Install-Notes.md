@@ -157,3 +157,31 @@ sudo apt install nvidia-340
 > ```
 > npm start
 > ```
+
+## Important Note
+
+## Processes Using BandWith
+
+> using nethogs
+>
+> ```
+> sudo apt-get install nethogs
+> ```
+>
+> and then
+>
+> ```
+> nethogs
+> ```
+>
+> you can find out which pricesses are using the network and then kill them
+
+# NOTE
+
+> i have stopped the snapd from this address :
+>
+> https://askubuntu.com/questions/1045542/how-to-stop-snapd-from-auto-updating
+>
+> visit it and you can return it `snapd` to normal .
+>
+> i have also unchecked the update of the system from `daily` to `never`
