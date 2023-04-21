@@ -19,7 +19,7 @@
 > ```jsx
 > getBtnClasses = () => {
 > 	let value = 0;
->     return value;
+>     	return value;
 > }
 > // now you call it with () , like bellow :
 > <button onClick={this.getBtnClasses()}>Show Value</button>

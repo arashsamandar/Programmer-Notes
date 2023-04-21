@@ -1,262 +1,221 @@
-## Laravel API
+## create model with -mfs
 
+> this command creates Model , Factory & Seeder
+>
+> ```
+> php artisan make:model Petition -mfs
+> ```
 
+> now to create the controller run :
+>
+> ```
+> php artisan make:controller PetitionController --api --model=Petition
+> ```
 
-##### **`NOTE`** : *Before AnyThing Remember You Should Install You Api Route Function , in a `Controller` , and not in some Closure in `Web.php`* 
+> then we create a Petition Resource with :
+>
+> ```
+> php artisan make:resource PetitionResource
+> ```
+>
+> api resources are Templates where you define how you want the JSON data to be returned to the user when they send an api request .
 
+> when we want to return more than one resource , more than one petition , we create a resource collection
+>
+> ```
+> php artisan make:resource PetitionCollection
+> ```
 
+## Working With Factory & Seeder
 
-First Watch This Video ( You To Learn To Install `Dingo` ) :arrow_double_down:
+> to create the `Model` With the migration, Factory & Seeder , you need to run :
+>
+> ```
+> php artisan make:model Petition -mfs
+> ```
 
-[Just Learn To Install Dingo To Laravel ](https://www.youtube.com/watch?v=r40yAZAi6PQ&t=405s)
+## Fill The Database With Factory & Seeder
 
-> Second Watch This Series ( To Learn How To Create Your `Rest API`) :arrow_double_down:
+> after you ran the above command , you have Seeder and Migration and Factory Created .
+>
+> now go to the Factory and in its `definition` Method . write something like bellow :
 
-[Learn How To Make AN Api](https://www.youtube.com/watch?v=xYsUKrKe_OI&t=333s)
+```php
+public function definition()
+    {
+        return [
+            'title' => $this->faker->word,
+            'category' => $this->faker->text,
+            'description' => $this->faker->text(200),
+            'auther' => $this->faker->name,
+            'signees' => $this->faker->numberBetween(0,100000)
+        ];
+    }
+```
 
------------------------
+> then go to your model seeder file and run the following :
 
-##### Things You need In `config\api.php`
+```php
+class PetitionSeeder extends Seeder
+{
+    public function run()
+    {
+        Petition::factory(50)->create();
+    }
+}
+```
+
+--------------
+
+### Send data to the view ( Moden Way )
+
+```php
+$petitions = Petitioin::all();
+return view('index')->with('petition',$petition);
+```
+
+### Send data from api
+
+> to send data in our api , Laravel has Api resources , we have created one in above codes . in the `PatitionResource` we can customize what we want to send , which fields to hide and which to show and how to structure them and etc ...
+
+> in this `PetitionResource` file we have bellow code :
+>
+> ```php
+> public function toArray($request)
+> {
+>     return parent::toArray($request);
+> }
+> // we change it to what we want , like bellow code :
+> public function toArray($request)
+>     {
+>         return [
+>           'id' => $this->id,
+>           'title' => $this->title,
+>           'auther' => $this->auther,
+>         ];
+>     }
+> ```
+>
+> But , when we are returning `a list of resource` , we use `PetitionCollection` which we defined in above codes .
+>
+> like bellow :
+>
+> ```php
+> class PetitionCollection extends ResourceCollection
+> {
+> 
+>     public function toArray($request)
+>     {
+>         return [
+>           'data' => $this->collection,
+>         ];
+>     }
+> }
+> ```
+>
+> now in the `PetitionController` we have bellow :
+>
+> ```php
+> public function index() {
+>     $petitions = Petition::all();
+>     return PetitionResource::collection(Petition::all());
+> }
+> // or
+> public function index() {
+>     return new PetitionCollection(Petition::all());
+> }
+> ```
+
+## Create method
+
+```php
+public function store(Request $request)
+{
+     $petition = Petition::create($request->only([
+         'title','description','category','auther','signees',
+     ]));
+     return new PetitionResource($petition);
+}
+```
+
+-----------
+
+----------------
+
+# The Entire PetitionController Codes
 
 ```php
 <?php
 
+namespace App\Http\Controllers;
 
-return [
+use App\Http\Resources\PetitionCollection;
+use App\Http\Resources\PetitionResource;
+use App\Models\Petition;
+use Illuminate\Http\Request;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Standards Tree
-    |--------------------------------------------------------------------------
-    |
-    | Versioning an API with Dingo revolves around content negotiation and
-    | custom MIME types. A custom type will belong to one of three
-    | standards trees, the Vendor tree (vnd), the Personal tree
-    | (prs), and the Unregistered tree (x).
-    |
-    | By default the Unregistered tree (x) is used, however, should you wish
-    | to you can register your type with the IANA. For more details:
-    | https://tools.ietf.org/html/rfc6838
-    |
-    */
+class PetitionController extends Controller
+{
+    public function index()
+    {
+        return new PetitionCollection(Petition::all());
+    }
 
-    'standardsTree' => env('API_STANDARDS_TREE', 'x'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | API Subtype
-    |--------------------------------------------------------------------------
-    |
-    | Your subtype will follow the standards tree you use when used in the
-    | "Accept" header to negotiate the content type and version.
-    |
-    | For example: Accept: application/x.SUBTYPE.v1+json
-    |
-    */
+    public function store(Request $request)
+    {
+        $petition = Petition::create($request->only([
+            'title','description','category','auther','signees',
+        ]));
+        return new PetitionResource($petition);
+    }
 
-    'subtype' => env('API_SUBTYPE', 'wego'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default API Version
-    |--------------------------------------------------------------------------
-    |
-    | This is the default version when strict mode is disabled and your API
-    | is accessed via a web browser. It's also used as the default version
-    | when generating your APIs documentation.
-    |
-    */
+    public function show(Petition $petition)
+    {
+        return new PetitionResource($petition);
+    }
 
-    'version' => env('API_VERSION', 'v1'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default API Prefix
-    |--------------------------------------------------------------------------
-    |
-    | A default prefix to use for your API routes so you don't have to
-    | specify it for each group.
-    |
-    */
+    public function update(Request $request, Petition $petition)
+    {
+        $petition->update($request->only([
+            'title','description','category','auther','signees'
+        ]));
+        return new PetitionResource($petition);
+    }
 
-    'prefix' => env('API_PREFIX', 'api'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default API Domain
-    |--------------------------------------------------------------------------
-    |
-    | A default domain to use for your API routes so you don't have to
-    | specify it for each group.
-    |
-    */
-
-    'domain' => env('API_DOMAIN', null),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Name
-    |--------------------------------------------------------------------------
-    |
-    | When documenting your API using the API Blueprint syntax you can
-    | configure a default name to avoid having to manually specify
-    | one when using the command.
-    |
-    */
-
-    'name' => env('API_NAME', "WEGOBAZAAR API"),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Conditional Requests
-    |--------------------------------------------------------------------------
-    |
-    | Globally enable conditional requests so that an ETag header is added to
-    | any successful response. Subsequent requests will perform a check and
-    | will return a 304 Not Modified. This can also be enabled or disabled
-    | on certain groups or routes.
-    |
-    */
-
-    'conditionalRequest' => env('API_CONDITIONAL_REQUEST', true),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Strict Mode
-    |--------------------------------------------------------------------------
-    |
-    | Enabling strict mode will require clients to send a valid Accept header
-    | with every request. This also voids the default API version, meaning
-    | your API will not be browsable via a web browser.
-    |
-    */
-
-    'strict' => env('API_STRICT', false),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | Enabling debug mode willAPI_DEBUG=true
- result in error responses caused by thrown
-    | exceptions to have a "debug" key that will be populated with
-    | more detailed information on the exception.
-    |
-    */
-
-    'debug' => env('API_DEBUG',true),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Generic Error Format
-    |--------------------------------------------------------------------------
-    |
-    | When some HTTP exceptions are not caught and dealt with the API will
-    | generate a generic error response in the format provided. Any
-    | keys that aren't replaced with corresponding values will be
-    | removed from the final response.
-    |
-    */
-
-    'errorFormat' => [
-        'message' => ':message',
-        'errors' => ':errors',
-        'code' => ':code',
-        'status_code' => ':status_code',
-        'debug' => ':debug',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | API Middleware
-    |--------------------------------------------------------------------------
-    |
-    | Middleware that will be applied globally to all API requests.
-    |
-    */
-
-    'middleware' => [
-
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Providers
-    |--------------------------------------------------------------------------
-    |
-    | The authentication providers that should be used when attempting to
-    | authenticate an incoming API request.
-    |
-    */
-
-    'auth' => [
-        'jwt' => 'Dingo\Api\Auth\Provider\JWT',
-
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Throttling / Rate Limiting
-    |--------------------------------------------------------------------------
-    |
-    | Consumers of your API can be limited to the amount of requests they can
-    | make. You can create your own throttles or simply change the default
-    | throttles.
-    |
-    */
-
-    'throttling' => [
-
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Response Transformer
-    |--------------------------------------------------------------------------
-    |
-    | Responses can be transformed so that they are easier to format. By
-    | default a Fractal transformer will be used to transform any
-    | responses prior to formatting. You can easily replace
-    | this with your own transformer.
-    |
-    */
-
-    'transformer' => env('API_TRANSFORMER', Dingo\Api\Transformer\Adapter\Fractal::class),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Response Formats
-    |--------------------------------------------------------------------------
-    |
-    | Responses can be returned in multiple formats by registering different
-    | response formatters. You can also customize an existing response
-    | formatter.
-    |
-    */
-
-    'defaultFormat' => env('API_DEFAULT_FORMAT', 'json'),
-
-    'formats' => [
-
-        'json' => Dingo\Api\Http\Response\Format\Json::class,
-
-    ],
-
-];
+    public function destroy(Petition $petition)
+    {
+        $petition->delete();
+        return response()->json(null,204);
+    }
+}
 
 ```
 
-##### Also Bellow code must be in you `web.php`
+# Send Back The Response In A Different Fasion
 
-```php
-$api = app('Dingo\Api\Routing\Router');
+> for example for the `index` method , instead of returning the `new ResourceCollection($petition)` we use the `response` , like bellow :
+>
+> ```php
+> public function index()
+>     {
+>         return response()->json(new PetitionCollection(Petition::all()),200);
+>     	// or you could use HTTP Response Instead of the `200` code , like bellow :
+>     	return response->json(new 	ResourceCollection(Petition::all()),
+>                               Response::HTTP_OK)
+>     }
+> ```
+>
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
-   $api->get('/sam','HomeController@samandar');
-});
-```
+### Important
 
---------------------
-
-##### They Are Also Other Ways To Set The Api Up and Running
+> How to get message from a protected route group
+>
+> ```
+> in the `Postman` , you must send Header : Accept > application/json
+> ```
+>
+> 
