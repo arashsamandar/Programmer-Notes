@@ -1,7 +1,8 @@
 # JavaScript Essentials Training
 
-> Different Data Types In JavaScript
+> Different Primary Data Types In JavaScript
 - Number
+- BigInt
 - String
 - Boolean
 - null

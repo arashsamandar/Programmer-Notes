@@ -58,11 +58,12 @@ $("#addButton").on('click',function () {
 });
 ```
 
-**Another Example Wich Follows Above , is How To Get This Rows , We Get Them Like :**
+**Another Example Which Follows Above , is How To Get This Rows , We Get Them Like bellow : **
+
 ```javascript
 // when the check button is clicked , we have :
 $('body').delegate('#eduTable #check','click',function(){
-   var data-id = $(this).data('id');
+   var data_id = $(this).data('id');
    var row = $("tr[data-id=" + data-id + "]");
    var inputTexts = row.find("input[type=text]");
 });
