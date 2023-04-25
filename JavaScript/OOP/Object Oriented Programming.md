@@ -14,8 +14,8 @@ var emptyObject = {};
 
 ```javascript
 var person = {
-    "name":"john",
-    "family":"smith"
+    name:"john",
+    family:"smith"
 };
 person.greet = function() {
     return this.name + " " + this.family;

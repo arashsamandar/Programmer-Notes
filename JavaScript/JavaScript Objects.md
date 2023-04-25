@@ -106,11 +106,11 @@ circle.draw();
 
 > `prototypes means parent`
 
-![](F:\Programming Notes\JavaScript\assets\prototypes.png)
+![](F:\Programmer-Notes\JavaScript\assets\prototypes.png)
 
 > for example when we create an Array , we have two ____proto____ , like bellow . wich reaches to our first prototype , which is our base object .
 
-![](F:\Programming Notes\JavaScript\assets\multilevelInheritance.png)
+![](F:\Programmer-Notes\JavaScript\assets\multilevelInheritance.png)
 
 ## Using prototype
 
@@ -154,7 +154,7 @@ function Circle(radius) {
     this.radius = radius;
 }
 
-Cricle.prototype = Object.create(Shape.prototype);
+Circle.prototype = Object.create(Shape.prototype);
 Circle.prototype.constructor = Circle;
 
 Circle.prototype.draw = function() {
@@ -165,7 +165,7 @@ const s = new Shape();
 const c = new Circle(1); // extends from Shape prototype .
 ```
 
-![](F:\Programming Notes\JavaScript\assets\proinherit.png)
+![](F:\Programmer-Notes\JavaScript\assets\proinherit.png)
 
 > so the circle also have the `duplicate`method from the `Shape`
 
@@ -252,7 +252,6 @@ for(let shape of shapes)
 ```javascript
 const canEat = {
     eat:function() {
-        this.hunger--
         console.log('eating');
     }
 };

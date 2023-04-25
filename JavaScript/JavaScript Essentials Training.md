@@ -158,8 +158,8 @@ arash.updateRate // return 959
 // we can even create an Array of this Object , just like :
 var userArrays = new Array();
 userArrays = [
-   new User("mohsen","yegane",12,"Graphist",2,512,"beginner");
-   new User("amir","pashayee",20,"Designer",6,689,"Advanced");
+   new User("mohsen","yegane",12,"Graphist",2,512,"beginner"),
+   new User("amir","pashayee",20,"Designer",6,689,"Advanced"),
 ]
 
 console.log(userArrays[0].family) // returns yegane
@@ -176,7 +176,7 @@ function doSomeMath() {
       var result = a*b;
       return result;
    }
-   return multiply;
+   return multiply();
 }
 
 var theResult = doSomeMath() // this theResult now have the entire multiply() function , in it
@@ -192,7 +192,7 @@ function giveMeEms(pixels) {
    function doTheMath() {
       return pixels/baseValue;
    }
-   return doTheMath;
+   return doTheMath();
 }
 
 var smallSize = giveMeEms(12);
@@ -211,7 +211,7 @@ the browser is an object , and the document it displays is an object too .
 - `window.innerWidth`
 - `window.open`
 - window is the top Object in the BOM
-![Image](D:\Programming Notes/medley/resources/ByGttDEpV_H1JptTraN.png)
+![Image](F:\Programmer-Notes/medley/resources/ByGttDEpV_H1JptTraN.png)
 
 ---
 ## Target Elements In The Dom With QuerySelector
