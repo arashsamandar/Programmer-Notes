@@ -12,7 +12,8 @@ import {BrowserRouter} from 'react-router-dom';
 render(
     <BrowserRouter>
         <App />
-    </BrowserRouter>,document.getElementById('MyReact'));
+    </BrowserRouter>,document.getElementById('MyReact')
+);
 ```
 
 > now we need to tell React , What component should be rendered Base on a Given URL .

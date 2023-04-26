@@ -87,7 +87,8 @@ var test = "_1_5_8";
 test.replace('_1','');
 ```
 
-**To Split a String ( for example by `underline` ) we have**
+**To Split a String to an Array ( for example by `underline` ) we have**
+
 ```javascript
 var test = "_1_2_4";
 var testArray = test.split("_");
@@ -123,13 +124,27 @@ function isArray(myArray) {
 ```
 And we can check every variable to know if its type is
 1. Number
+
+1. Binint
+
 1. String
+
 1. Boolean
+
 1. Array
-1. Date
+
+1. undefined
+
+1. null
+
+1. Symbol
+
 1. Object
-**And All By Only Using This `.Constructor` On Our Variable .**
-**Another example :**
+
+1. Date
+
+  **And All By Only Using This `.Constructor` On Our Variable .**
+  **Another example :**
 ```javascript
 var myDate = new Date();
 document.getElementById("demo").innerHTML = isDate(myDate);

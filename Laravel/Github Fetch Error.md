@@ -21,6 +21,6 @@ php artisan key:generate
 > then in the github cmd type :arrow_double_down:
 
 ```
-clone https:\\the_address
+git clone https:\\the_address.git
 ```
 

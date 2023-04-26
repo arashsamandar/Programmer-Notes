@@ -3,7 +3,7 @@
 > Different Ways of Including a `Function` in your `Node`
 
 **example**
-```markup
+```html
 <button onclick="this.innerHTML=Date()">The Time Is</button>
 // or
 <button onclick="myfunction()">the time is</button>

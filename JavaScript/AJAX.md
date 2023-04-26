@@ -32,6 +32,9 @@ function loadDoc() {
    xhttp.open("GET","ajax_info.txt",true);
    xhttp.send();
 }
+// Meaning : you send a GET Request to "ajax_info.txt" File.
+// and now you get that file , and you show whatever is in it with this.responseText
 ```
 
 > **NOTE :** for `Ajax` in `Laravel` , and more complicated `Ajax` Requests with `JQuery` , watch the `Ajax` page at `Laravel` NoteBook
+

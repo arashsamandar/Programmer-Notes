@@ -374,3 +374,19 @@ sudo service apache2 stop
 > so if you want to edit the `php.ini` go to above folder edit it and uncomment the 
 
 https://stackoverflow.com/questions/31206186/call-to-undefined-function-simplexml-load-string/35820787
+
+## See all Applications in ubuntu
+
+> use bellow command
+>
+> ```
+> cd /usr/share/applications
+> // then
+> ls
+> ```
+>
+> to edit the Desktop applications open the :
+>
+> ```
+> sudo nautilus ~/Desktop
+> ```

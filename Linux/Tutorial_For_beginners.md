@@ -352,7 +352,7 @@ sudo apt-get install SoftwareName
 
 > the easy and popular way on `Ubuntu` is by usin the `Software packages` , Like Bellow :arrow_double_down:
 
-![image-20200123223622299](F:\Programming Notes\Linux\assets\image-20200123223622299.png)
+![image-20200123223622299](assets\image-20200123223622299.png)
 
 ## Sending Emails
 

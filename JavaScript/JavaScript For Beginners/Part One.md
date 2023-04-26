@@ -2,11 +2,11 @@
 
 > we have two type of `variable`types in javaScript , **Primitive & Reference**
 
-![](F:\Programming Notes\JavaScript\JavaScript For Beginners\assets\variableTypes.png)
+![](F:\Programmer-Notes\JavaScript\JavaScript For Beginners\assets\variableTypes.png)
 
  
 
-![](F:\Programming Notes\JavaScript\JavaScript For Beginners\assets\referenceTypes.png)
+![](F:\Programmer-Notes\JavaScript\JavaScript For Beginners\assets\referenceTypes.png)
 
 :pushpin:**An exapmle of Reference Data type**
 
