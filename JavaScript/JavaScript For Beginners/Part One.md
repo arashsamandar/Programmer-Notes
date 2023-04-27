@@ -1,4 +1,4 @@
-## Variable Types
+## Variable Types.
 
 > we have two type of `variable`types in javaScript , **Primitive & Reference**
 
