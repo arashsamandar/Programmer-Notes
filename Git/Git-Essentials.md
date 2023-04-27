@@ -1,3 +1,11 @@
+## NOTE :
+
+> Git pull is a combination of two commands, `Git fetch` followed by `Git merge`.
+
+> so you must Notice that if you use `Git pull`, your code will be replaced By the repository codes which you have just pulled from ( of course after you set your remote )
+>
+> if you don't want this, you must use `Git fetch`
+
 ### how to change your username in `Git`
 
 > to change your username use `git config`
