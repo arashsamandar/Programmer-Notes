@@ -1,4 +1,4 @@
-> something something something tt first you must know that we have three part , one part is the user-side ( or when the user clicks on an icon , for example clicks on the `Login With Google` ) .
+> nowItHaveWorked and Im Happy :) something something something tt first you must know that we have three part , one part is the user-side ( or when the user clicks on an icon , for example clicks on the `Login With Google` ) .
 >
 > Then our Application sends a requiest to the `Authorization Server` , and passes : `Client ID` , `Secret ID` and `Unique URL` ( which would be used to return the Authorization code back to us ).
 >
