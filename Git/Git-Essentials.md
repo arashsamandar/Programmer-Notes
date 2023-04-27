@@ -22,5 +22,13 @@
 > ls -a .git
 > ```
 
-### how to go to past time :)
+### how to set UpStream in Git
+
+```tex
+git push --set-upstream origin main
+// or
+git push --set-upstream origin master
+```
+
+
 
