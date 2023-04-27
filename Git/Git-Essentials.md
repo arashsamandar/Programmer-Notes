@@ -30,7 +30,7 @@
 > ls -a .git
 > ```
 
-### how to set UpStream in Git
+### how to ChangeUpStream in Git
 
 ```tex
 git push --set-upstream origin main
@@ -38,5 +38,21 @@ git push --set-upstream origin main
 git push --set-upstream origin master
 ```
 
+### Create and Go To New Branch
 
+```text
+git checkout -b myBranch
+```
+
+### checking which branch you are in
+
+```text
+git branch
+```
+
+### if you want to commit now, you have to change --set-upstream
+
+```text
+git remote --set-upstream myBranch
+```
 
