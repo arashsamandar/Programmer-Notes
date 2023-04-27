@@ -30,5 +30,19 @@ git push --set-upstream origin main
 git push --set-upstream origin master
 ```
 
+### Create and Go To New Branch
+
+```text
+git checkout -b myBranch
+```
+
+### using Git Log
+
+```text
+git log
+```
+
+
+
 
 
