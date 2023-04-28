@@ -1,10 +1,32 @@
-## NOTE :
+### git clone
 
-> Git pull is a combination of two commands, `Git fetch` followed by `Git merge`.
+> is used to create a working copy of a remote repository
 
-> so you must Notice that if you use `Git pull`, your code will be replaced By the repository codes which you have just pulled from ( of course after you set your remote )
+### git pull
+
+> like
 >
-> if you don't want this, you must use `Git fetch`
+> ```javascript
+> git pull origin master //connects origin(http://folan...) to master and pull it
+> ```
+
+### git push
+
+> use after you want your code to be written to remote rempository, like bellow :
+>
+> ```javascript
+> git push -u origin master //-u means (upstream)
+> ```
+
+### See All Branches ( Local & Remote )
+
+```javascript
+git branch //shows which branch you are on
+git branch -v //shows branchs with there last commits
+git branch -a // NOTE : Important and shows all local and remote branches
+
+git branch -d branchName //Deletes a branch
+```
 
 ### how to change your username in `Git`
 
@@ -53,6 +75,19 @@ git branch
 ### if you want to commit now, you have to change --set-upstream
 
 ```text
-git remote --set-upstream myBranch
+git remote --set-upstream origin
+```
+
+```javascript
+// before that you probably have used this :
+git remote add origin https:\\github.com\folanuser\folanrepo.git
+```
+
+### or you can use `-u` with every push command
+
+```javascript
+git push -u theDefaultOrigin theBranch
+// like bellow :
+git push -u origin master
 ```
 

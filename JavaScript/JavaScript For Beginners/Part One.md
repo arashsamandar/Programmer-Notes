@@ -458,7 +458,7 @@ const filteredArray = numbers.filter(function(value) {
    return value >= 0; 
 });
 
-const filteredArray = numbers(value => {
+const filteredArray = numbers.filter(value => {
    return value >= 0; 
 });
 

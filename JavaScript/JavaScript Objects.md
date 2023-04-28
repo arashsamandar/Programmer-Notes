@@ -94,13 +94,17 @@ circle.defualtLocation; // returns the default location .
 circle.draw();
 ```
 
-:pushpin:**So Getter & Setter with `Object.defineProperty(this,'yourvalue',{`**
+:pushpin:**So Getter & Setter with **
 
-**`get:function(){ return yourvalue;`**
+```javascript
+Object.defineProperty(this,yourvalue,{
+	get:function(){ 
+    	return yourvalue
+	})
+}
+```
 
-**`}`**
 
-**`})`**
 
 ## Prototypes and Prototypical Inheritance
 
