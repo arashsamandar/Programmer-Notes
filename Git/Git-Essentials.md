@@ -1,3 +1,17 @@
+## Important :
+
+#### Resolving The `refspec error` when trying to push to the repository we have `just cloned`, from the branch we just created with `git checkout -b my-new-branch`
+
+> for resolving this error use `git branch -M my-new-branch` when you are in your my-new-branch
+
+```text
+git branch -M my-new-branch
+```
+
+### git pull
+
+> A pull request is a request to the original repository's owner to include your changes in their codebase
+
 ### git clone
 
 > is used to create a working copy of a remote repository
