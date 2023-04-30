@@ -160,23 +160,105 @@ class Arash {
 ```typescript
 // in javascript you can use "get" and "set" before a method and it becomes
 // getter or setter, the benefit it that you can call the private if has setter and call it like a property !
+// so we write Classes in ES6 ( TS or JS ) like bellow Arash :
+// Remember that using the "_" is a convention, because the getter & sette
+// can not have the same name as the properties.
 class Arash {
-    private name: string;
-    private family: string;
-    
+    constructor(private _name?: string,private _family?: string) {
+        this._name = _name;
+        this._family = _family;
+    }
     get name() {
-        return this.name;
+        return this._name;
     }
     set name(namevalue) {
-        if(typeof name =! 'string') throw 'name is not valid';
-        this.name = namevalue;
+        if(typeof namevalue === 'string') this._name = namevalue;
+        else throw new Error('name is not an string');
+    }
+    get family() {
+        return this._family;
+    }
+    set family(familvalue) {
+        if(typeof familvalue === 'string') this._family = familvalue;
+        else throw new Error('name is not an string');
+    }
+    printOut() {
+        console.log(this._name + ' ' + this._family);
     }
 }
-// now
-let aman = new Arash();
-let amanName = aman.name; // look that we refer to it as a property
-aman.name = 'something'; // again calling it like it is public and a property
+
+let newarash = new Arash();
+newarash.name = 'arash';
+newarash.family = 'salamander';
+newarash.printOut();
 ```
+
+> a complete example with the use of `_` underline as convention
+
+## Debugging TypeScript
+
+### Note For VSCode & Others ( Not webstorm )
+
+> #### For this porpuse
+>
+> - *First* : if you don't have `typescript` you first install it with `npm --global install typescript`
+>
+> - *Second* : you must install `npm install --save-dev ts-node`
+>
+> - *Third:* you must make sure that you ran `tsc --init`, this will create the `typescript config file`, witth the name of `tsconfig.json`
+>
+> - *Fourth* : in typescript tsconfig.json, uncomment mapping by `sourceMap: true`, this will create the `filename.ts.map` which is for  `debug` porpuses,
+>
+> - *Fifth* : create `launch.json` file and write or put next line :
+>
+> - ```
+>   "preLunchTask": "tsc build - tsconfig.json"
+>   ```
+>
+>   now you can put `break points` and debug in `VSCode`
+
+-------
+
+## Types In Javascript & typescript
+
+`JavaScript Types` : number, string, boolean, object, null, undefined
+
+`TypeScript Added Types` : any, unknown, never, enum, tuple
+
+---------
+
+## The Problem
+
+> Note bellow code and how it Throws an error. despite the fact works in javascript
+
+```typescript
+let arash = new Object();
+arash.name = 'samandar';	// this line throws error ( property name doesn't exist )
+```
+
+#### now resolve it with `index types`
+
+## Index Types
+
+> to dynamically assign properties to an object in TypeScript.
+>
+> An index type allows you to define an object that can accept fields with any string as key and any type as value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
