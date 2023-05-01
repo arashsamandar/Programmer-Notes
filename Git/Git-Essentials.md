@@ -8,6 +8,12 @@
 git branch -M my-new-branch
 ```
 
+### Local branch Tracking remote origin branch
+
+```text
+git checkout ob mybranch origin/mybranch
+```
+
 ### git pull
 
 > A pull request is a request to the original repository's owner to include your changes in their codebase
