@@ -26,6 +26,81 @@ interface Fruite {
     price: number;
     draw:() => void;
 }
+// Important : making a property of an Object "readonly", so we can't change it later, like :
+let user: {
+    id: number,
+    name: string,
+} = {id:1, name:'arash'};
+user.id = 2 // it is currect here
+
+// but now to make a property like "id" readonly , we use readonly keyword
+// OBJECT TYPE ONNOTATION AND MORE
+let user: {
+    readonly id: number,
+    name: string
+} = {id:1, name:'arash'};
+user.id = 2 // will give us error now :)
+
+// define function for an Object like bellow :
+let user: {
+	readonly id: number,
+    name: string,
+    getDate: (date: Date) => void;
+} = {
+    id:1,
+    name:'arash',
+    getDate: (date: Date) => {
+        console.log(date);
+    }
+}
+
+// IMPORTANT : TYPE ANNOTATION WITH OBJECTS
+// As above code is a bit messy and hard to read,
+// We Define A Type For This "user" Object
+type User = {
+    readonly id: number,
+    name: string,
+    getDate:(date: Date) {
+    consolel.log(date);
+	}
+}
+let arash: User = {id:1,name:'arash',getData:(name:string) => void}
+// you must pay attention to above "arash" Object, take a look how properties are past , take a good look
+// another example for clearity
+let myFunction = function (person:{name: string,family: string,age: number,printOut:(name:string) => void}) // as you see this function name "myFunction", takes an Object as its argument
+{
+    console.log(person.name + ' ' + person.family + ' ' + person.age);// look how we pointed out the properties of the "person" object inside this function
+}
+
+let myPerson = {
+    name:'arash',
+    family:'samandar',
+    age:34,
+    printOut:(name:string) => {
+        let folani = myPerson.name;
+        let bahmani = myPerson.family;
+        console.log('Print Out : ' + folani + ' ' + bahmani + name);
+    }
+}
+
+myPerson.printOut('print out something pall :)');
+myFunction(myPerson);
+
+// another complex code : "how to inizialize an optional parameter for the "printOut" method ?"
+// pay attention that you can not do
+let myFunction = function(persons:{name:string,family:string,printOut:(myName:string = arash) => void });
+// above code is an error,myName could be initiazed, Error : "A parameter initializer is only allowed in a function or constructor implementation."
+
+// instead write it like bellow : "define the method in the myFunction function body"
+let myFunction = function (
+    person:{name: string,family: string,age?: number,getUser:(name: string,family: string,age: number) => void}
+) {
+    const age = person.age || 0; // default value
+    console.log(person)
+}
+
+
+
 ```
 
 #### Function with `Optional Parameters`
@@ -244,13 +319,87 @@ arash.name = 'samandar';	// this line throws error ( property name doesn't exist
 >
 > An index type allows you to define an object that can accept fields with any string as key and any type as value
 
+## Tuples
 
+> Tuples are `Arrays` with `special types`, like bellow :
 
+```typescript
+let user:[string, number] = ['arash',34]
+```
 
+> Tuples are only good when we have `key value` pair ( meaning only two values ), anything more that would make your code confusing .
 
+## Default Parameter
 
+```typescript
+function calculate(income: number,year?: number); // year is optional
+// we can also write it like this which i think is a lot better
+function calculate(income: number,year = 2023) // now if you don't give it year , year would be 2023
+```
 
+---------
 
+## Defining Objects
+
+> we can define object ( and like other values we give it type , like bellow :)
+
+```typescript
+let employee: {
+    id: number,
+    name?: string,
+} = {id:1, name:'arash'};
+// name is optional and we can define it or not define it .
+```
+
+## Using Rest Parameter `...` for the Arguments of a Function
+
+> In TypeScript, the rest parameter syntax allows a function to accept an indefinite number of arguments as an array
+
+```typescript
+// Important : when you define `...` for the arguments of a function
+// Important : then you must treat it as such, like folaniFunc(...myArray);
+let printNumbers = function(...args: number[]) {
+    args.forEach(arg => {
+        console.log(arg);
+    })
+}
+let myNumberArray: number[] = [6,7,3,2];
+printNumbers(...myNumberArray);
+
+// In above example, we have defined the type of the args parameter explicitly as an array of number type.
+//****We have also spread the myNumberArray array into separate arguments using the spread syntax (...)****.
+
+// IMPORTANT : if you use it like => printNumbers(myNumberArray), you will get error
+printNumbers(myNumberArray); // This Is Error
+
+// ----------------------------------- Another Example -----------------------------------
+function calculateAverage(...numbers: number[]) {
+    let total = 0;
+    numbers.forEach((num) => total += num);
+    return total / numbers.length;
+}
+
+console.log(calculateAverage(1,2,3,4));
+```
+
+-----------
+
+## Union Types
+
+> to give a function more than one type ! use it with `|`
+
+```typescript
+function kgToLbs(weight: number | string) {
+    try {
+        if(typeon weight === 'number') throw 'type is a number'
+	    else if(typeof weight === 'string') throw 'type is a string'
+    }catch(err) {
+        if(err == 'number') console.log('variale is a number');
+        else if(err == 'string') console.log('variable is a string');
+    }
+    
+}
+```
 
 
 
