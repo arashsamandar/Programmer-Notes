@@ -1,3 +1,7 @@
+[TOC]
+
+-------------------
+
 ### custome built Type
 
 ```typescript
@@ -102,6 +106,24 @@ let myFunction = function (
 
 
 ```
+
+> Note About Last Line Of Code :
+>
+> ```typescript
+> const age = Person.age || 0;
+> ```
+>
+> because i've seen using `&&` like :
+>
+> ```jsx
+> { isLoading && <p>Loading...</p> } // if isLoading is true would return Loading...
+> ```
+>
+>  If all operands are true, the operator will return the value of the last operand.
+>
+> Otherwise, it will return the value of the first falsy operand encountered.
+>
+> also preserves non-Boolean values and returns them as they are.
 
 #### Function with `Optional Parameters`
 
@@ -339,7 +361,7 @@ function calculate(income: number,year = 2023) // now if you don't give it year 
 
 ---------
 
-## Defining Objects
+## Defining & Destructuring Objects
 
 > we can define object ( and like other values we give it type , like bellow :)
 
@@ -349,6 +371,23 @@ let employee: {
     name?: string,
 } = {id:1, name:'arash'};
 // name is optional and we can define it or not define it .
+
+// IMPORTANT EXAMPLE OF OBJECT DESTRUCTURING IN JS AND TS
+const User = {
+    name:'arash',
+    family:'samandar',
+    someprop:{
+        havij:'something',
+        falili:'something else'
+    },
+    returnProperties:function () {
+        return this.someprop;
+    }
+}
+const { someprop:{havij} } = User;
+console.log(havij);
+// or use the method `returnProperties` for this purpose and write
+const { havij } = User.returnProperties();
 ```
 
 ## Using Rest Parameter `...` for the Arguments of a Function
@@ -399,9 +438,69 @@ function kgToLbs(weight: number | string) {
     }
     
 }
+// or to have different outputs :
+type Customer = {
+    birthday: Date
+};
+
+function getCustomer(id: number): Customer | null {
+    return (id === 0) ? null : {birthday: new Date()}
+}
 ```
 
+---------
 
+## Type Intersection In TS
+
+> is like extending from two interface.
+
+```typescript
+type draw = {
+    drawing:() => void;
+}
+type resize = {
+    resizing:() => void;
+}
+type UI = draw & resize;
+
+let textbox:UI = {
+    drawing() {
+      console.log('draw the UI');  
+    },
+    resizing() {
+        console.log('resize the UI');
+    }
+}
+```
+
+---------
+
+## Optional `?` Chaining To Ensure The returny is not `Undefined` or `Null`
+
+```typescript
+type Customer = {
+    birthday?: Date
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+    return (id === 0) ? null : {birthday: new Date()};
+}
+
+let customer = getCustomer(0);
+
+// Now as the getCustome(0) might return null for birthdate ( which it will )
+// For This Case We Use `?` before 'birthday` property of the customer object to check for null
+// only returns when "birthday" is not null with :
+
+console.log(customer?.birthday);
+
+// or calling getFullYear() of a Date object ( which if birthday is null will give us error !)
+// so
+
+console.log(customer?.birthday?.getFullYear());
+
+// so ".?" checks null and undefined before calling for a property or method
+```
 
 
 
