@@ -70,8 +70,8 @@ type User = {
 }
 let arash: User = {id:1,name:'arash',getData:(name:string) => void}
 // you must pay attention to above "arash" Object, take a look how properties are past , take a good look
-// another example for clearity
-let myFunction = function (person:{name: string,family: string,age: number,printOut:(name:string) => void}) // as you see this function name "myFunction", takes an Object as its argument
+// another example for clarity
+let myFunction = function (person:{name: string,family: string,age: number,printOut:(name:string) => void) // as you see this function name "myFunction", takes an Object as its argument
 {
     console.log(person.name + ' ' + person.family + ' ' + person.age);// look how we pointed out the properties of the "person" object inside this function
 }
@@ -377,16 +377,17 @@ const User = {
     name:'arash',
     family:'samandar',
     someprop:{
-        havij:'something',
+        havij:'SALAMANDER',
         falili:'something else'
     },
-    returnProperties:function () {
-        return this.someprop;
+    returnProperties:() => {
+        return User.someprop;
     }
 }
 const { someprop:{havij} } = User;
 console.log(havij);
 // or use the method `returnProperties` for this purpose and write
+// bo
 const { havij } = User.returnProperties();
 ```
 
