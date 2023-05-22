@@ -2,7 +2,8 @@
 
 > the difference is that `git remote add origin` is for defining an origin ( remote repository ) to connect with our own.
 > and the `git branch --set-upstream-to` is about connecting `branches`, defining an upstream for our branch.
-> this command is used to set the upstream branch for a local branch
+> this command is used to set the upstream branch for a local branch.
+> The upstream branch is the remote branch that your local branch should track, which means that Git will use it as the default branch for push and pull operations. Setting the upstream branch is useful when you want to push and pull changes without specifying the remote and branch name every time.
 
 ## Adding Local Repository To GitHub
 
