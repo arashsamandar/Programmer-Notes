@@ -39,7 +39,7 @@ git checkout my-new-branch
 > then push to new branch like bellow :
 
 ```
-git push -u origin my-new-
+git push -u origin my-new-branch
 ```
 
 ### Deleting a branch
