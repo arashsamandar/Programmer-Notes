@@ -95,3 +95,7 @@ git tag -d ,new-commit
 ```
 
 ## Learn what is the difference between `Git pull` & `Git Clone` & maybe `Git rebase`
+
+---------
+## Using `Git Pull` & `Git Stash`
+> If you have local changes that you don't want to commit yet, you can use git stash to save them temporarily. This will allow you to pull changes from the remote repository without committing your local changes. Once you have pulled the changes, you can use git stash pop to apply your local changes again. If there are any conflicts between your local changes and the changes from the remote repository, you will need to resolve them manually before using git stash pop.
