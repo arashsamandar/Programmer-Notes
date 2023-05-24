@@ -59,7 +59,6 @@ git branch -d branchName //Deletes a branch
 >
 > ```
 > git config --global user.name "arash samandar"
-> // this commands push your commits to main, or master branch of origin (remote )
 > ```
 
 ### how to change user email in git
@@ -84,6 +83,7 @@ git branch -d branchName //Deletes a branch
 git push --set-upstream origin main
 // or
 git push --set-upstream origin master
+// this commands push your commits to main, or master branch of origin (remote )
 ```
 
 ### Create and Go To New Branch
