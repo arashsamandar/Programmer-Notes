@@ -38,6 +38,11 @@ git checkout ob mybranch origin/mybranch
 > git push -u origin master //-u means (upstream)
 > ```
 
+### Merge remote with local
+```markdown
+git merge origin/main --allow-unrelated-histories
+```
+
 ### See All Branches ( Local & Remote )
 
 ```javascript
