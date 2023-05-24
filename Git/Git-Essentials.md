@@ -2,10 +2,11 @@
 
 #### Resolving The `refspec error` when trying to push to the repository we have `just cloned`, from the branch we just created with `git checkout -b my-new-branch`
 
-> for resolving this error use `git branch -M my-new-branch` when you are in your my-new-branch
+> for resolving this error use `git branch -M my-new-branch` when you are in your my-new-branch, the -M changes the name of the branch you are in
 
 ```text
 git branch -M my-new-branch
+// this -M changes the name of the current branch with above command. it can also be used to move a branch
 ```
 
 ### Local branch Tracking remote origin branch
