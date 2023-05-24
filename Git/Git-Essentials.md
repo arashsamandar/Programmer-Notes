@@ -59,6 +59,7 @@ git branch -d branchName //Deletes a branch
 >
 > ```
 > git config --global user.name "arash samandar"
+> // this commands push your commits to main, or master branch of origin (remote )
 > ```
 
 ### how to change user email in git
