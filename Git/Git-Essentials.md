@@ -7,6 +7,7 @@
 ```text
 git branch -M my-new-branch
 git branch --set-upstream-to=origin/main main
+git merge origin/main --allow-unrelated-histories
 // this -M changes the name of the current branch with above command. it can also be used to move a branch
 ```
 
