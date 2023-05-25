@@ -6,6 +6,7 @@
 
 ```text
 git branch -M my-new-branch
+git branch --set-upstream-to=origin/main main
 // this -M changes the name of the current branch with above command. it can also be used to move a branch
 ```
 
