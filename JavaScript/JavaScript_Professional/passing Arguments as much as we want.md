@@ -17,7 +17,7 @@ const myObject = {
     family: string;
     [key: string]: any // meaning any string like age or ... as prope
 }
-let folani: myObject = {'arash','samandar'};
+let folani: myObject = {name:'arash',family:'samandar'};
 folani.age = 34; // like this one or... etc...
 folani.fruite = 'apple'; // cause type is "any"
 ```

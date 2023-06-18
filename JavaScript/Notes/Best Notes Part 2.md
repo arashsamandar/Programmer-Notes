@@ -14,7 +14,7 @@ newParagraph.appendChild(paragraphText);
 > example of creating a `div` and `appending` it to the `main` div
 
 The HTML CODE
-```markup
+```html
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -116,7 +116,6 @@ if($("#elementId").hasClass('your-class')) {
    // do something
 }
 ```
-
 
 
 

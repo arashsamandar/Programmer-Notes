@@ -2,7 +2,7 @@
 
 > Data Binding is a way to bind data to one or more Objects , ensuring synchronization
 
-![](F:\Programmer-Notes\JavaScript\Data_binding.assets\databinding.png)
+![](E:\Programmer-Notes\JavaScript\Data_binding.assets\databinding.png)
 
 ## Data Binding Elements
 
@@ -16,9 +16,9 @@
 >
 > and we also need a `Synchronization`mechanizm
 
-![](F:\Programmer-Notes\JavaScript\assets\databinding-1561409273787.png)
+![](E:\Programmer-Notes\JavaScript\assets\databinding-1561409273787.png)
 
 ## Data Binding Direction
 
-![](F:\Programmer-Notes\JavaScript\assets\databinding-1561409434085.png)
+![](E:\Programmer-Notes\JavaScript\assets\databinding-1561409434085.png)
 

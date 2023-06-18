@@ -42,7 +42,7 @@ Object.defineProperty(obj,'attrib',{
 delete obj.attrib // won't work
 ```
 
-> creating an object an then assiging it a method like bellow 
+> creating an object and then assiging it a method like bellow 
 
 ```javascript
 var person = {
@@ -157,11 +157,11 @@ var Person = class {
 
 :pushpin:*a language is object oriented if*
 
-![](F:\Programming Notes\Java\Java OOP\assets\modularity.png)
+![](E:\Programmer-Notes\Java\Java OOP\assets\modularity.png)
 
-![](F:\Programming Notes\Java\Java OOP\assets\association.png)
+![](E:\Programmer-Notes\Java\Java OOP\assets\association.png)
 
-![](F:\Programming Notes\Java\Java OOP\assets\modelingproblem.png)
+![](E:\Programmer-Notes\Java\Java OOP\assets\modelingproblem.png)
 
 :pushpin:*an example of association ( which means the relationship between to seperate Objects)*
 
@@ -216,7 +216,7 @@ var Person = {
 
 ```c#
 public int sum(int x,int y) {
-    return sum(x,y,0);
+    return sum(x,y);
 }
 public int sum(int x,int y,int z) {
     return sum(x,y,z);
@@ -226,14 +226,9 @@ public int sum(int x,int y,int z) {
 :pushpin:*now n javascript we have*
 
 ```javascript
-function sum(x,y,z) {
-    x = x ? x : 0; // x is x if x exist , otherwise it is 0
-    y = y ? y : 0;
-    z = z ? z : 0;
-}
 // but in newer version 2015 we have
 function sum(x=0,y=0,z=0) {
-    return x + y + x;
+    return (x + y + x);
 }
 ```
 

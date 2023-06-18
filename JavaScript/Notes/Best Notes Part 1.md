@@ -76,15 +76,18 @@ textInputs[0].value = "new Value";
 ```
 
 **To concat to a String in javaScript we have**
+
 ```javascript
 var arash = "Arash";
 arash += "_Samandar" // the result would be -> Arash_Samandar
 ```
 
 **To Remove a String From a String We Have**
+
 ```javascript
 var test = "_1_5_8";
-test.replace('_1','');
+var newone = test.replace('_1','');
+console.log(newone); // above cha
 ```
 
 **To Split a String to an Array ( for example by `underline` ) we have**

@@ -33,6 +33,7 @@ myObj.cars.car2 // return BMW , or we can use
 myObj.cars["car2"] // return BMW again
 ```
 **Changing AND/OR Deleting the Value in Object**
+
 ```javascript
 myObj.cars.car2 = "MERCEDES";
 delete myObj.cars.car2;
@@ -110,11 +111,11 @@ Object.defineProperty(this,yourvalue,{
 
 > `prototypes means parent`
 
-![](F:\Programmer-Notes\JavaScript\assets\prototypes.png)
+![](E:\Programmer-Notes\JavaScript\assets\prototypes.png)
 
 > for example when we create an Array , we have two ____proto____ , like bellow . wich reaches to our first prototype , which is our base object .
 
-![](F:\Programmer-Notes\JavaScript\assets\multilevelInheritance.png)
+![](E:\Programmer-Notes\JavaScript\assets\multilevelInheritance.png)
 
 ## Using prototype
 
@@ -169,7 +170,7 @@ const s = new Shape();
 const c = new Circle(1); // extends from Shape prototype .
 ```
 
-![](F:\Programmer-Notes\JavaScript\assets\proinherit.png)
+![](E:\Programmer-Notes\JavaScript\assets\proinherit.png)
 
 > so the circle also have the `duplicate`method from the `Shape`
 

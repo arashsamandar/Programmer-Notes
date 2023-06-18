@@ -6,12 +6,12 @@
 
 ```javascript
 const myval = ((a < b) && (b > c) && 'C Is The Max');
-console.log(myval); // returns 'c is the max'
+console.log(myval); // returns 'C is the max'
 ```
 
 ## ||
 
-> returns one of the __true ones__ , based on *how bigger it is*
+> returns the first true one
 
 ```javascript
 const myvaltwo = ((false) || 20 || 10 || 'arash');

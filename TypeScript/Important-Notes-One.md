@@ -64,11 +64,9 @@ let user: {
 type User = {
     readonly id: number,
     name: string,
-    getDate:(date: Date) {
-    consolel.log(date);
-	}
+    getDate:(name:string)=>void,
 }
-let arash: User = {id:1,name:'arash',getData:(name:string) => void}
+let arash: User = {id:1,name:'arash',getData:(name:s) => {console.log(name)}}
 // you must pay attention to above "arash" Object, take a look how properties are past , take a good look
 // another example for clarity
 let myFunction = function (person:{name: string,family: string,age: number,printOut:(name:string) => void) // as you see this function name "myFunction", takes an Object as its argument

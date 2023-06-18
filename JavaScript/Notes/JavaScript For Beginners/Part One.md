@@ -2,11 +2,11 @@
 
 > we have two type of `variable`types in javaScript , **Primitive & Reference**
 
-![](F:\Programmer-Notes\JavaScript\JavaScript For Beginners\assets\variableTypes.png)
+![](E:\Programmer-Notes\JavaScript\Notes\JavaScript For Beginners\assets\variableTypes.png)
 
  
 
-![](F:\Programmer-Notes\JavaScript\JavaScript For Beginners\assets\referenceTypes.png)
+![](E:\Programmer-Notes\JavaScript\Notes\JavaScript For Beginners\assets\referenceTypes.png)
 
 :pushpin:**An exapmle of Reference Data type**
 
@@ -106,7 +106,9 @@ function createCricle(radious) {
 }
 
 const circle1 = createCircle(1);
-console.log(circle1); 
+console.log(circle1.radius); 
+// or
+circle1.draw();
      
 ```
 
@@ -519,7 +521,7 @@ const sum = numbers.reduce((accumilator,currentValue) => {
 
 // or Write Like This
 
-const sum = numbers.reduce((accumilator,currentValue) => accumilator + currentValue);
+const sum = numbers.reduce((accumilator,currentValue) => {accumilator + currentValue});
 ```
 
 ## Functions In JavaScript
