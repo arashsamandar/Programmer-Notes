@@ -212,7 +212,7 @@ interface Point {
     x: number,
     y: number,
 }
-let getDistance = (pointOne: Point,pointTwo: Point) {
+let getDistance = (pointOne: Point,pointTwo: Point) => {
     // calculate Distance
 }
 // now you can use 'Cohesion' meaning related things should go together

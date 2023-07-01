@@ -1,3 +1,61 @@
+## Updating the `state` with `this.setState()`
+
+> in this example we define `username` and `password` directly in `this.state` , like bellow
+>
+> *Notice that we could mention them in the `this.setstate({})` object with `[]` brackets...
+
+```javascript
+export default class Arash {
+    constructor(props) {
+        super(props);
+        this.state = {
+            'username':'',
+            'password':'',
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event) {
+        this.setState({
+            [event.target.name]:event.target.value // notice it must be in []
+        })
+    }
+    handleSubmit(event) {
+        console.log(this.state);
+    }
+    render() {
+        return (
+            <div>
+            	<input type='text' name="username" onChange={()=>this.handleChange(event)}
+            </div>
+        )
+    }
+}
+```
+
+> but in `functional` Components we have :
+
+> now notice that `state` objects are not merged, Meaning that you have to write them explicitely even and if you only want to update one of it's properties, the entire object properties must be written, like bellow :
+
+```react
+const [input, setInput] = useState({
+  name: '',
+  email: '',
+});
+
+setInput({
+  name: 'John',
+  // email is not included here, so it will be lost
+});
+// Notice Bellow code
+setInput({
+  ...input, // copy all existing state properties
+  name: 'John', // update the name property
+});
+```
+
+
+
 ## How To Import CDN in React ?
 
 > you can use another `.css` file and in it you include the `url` for that cdn
