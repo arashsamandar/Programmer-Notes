@@ -245,7 +245,7 @@ const arash = new Teacher("Arash",18); // we see that is has it's super class co
 >
 > and we call each file a `Module`
 
-> we do Modularity by exporting our class to the public , and then we imort it wherever we need it .
+> we do Modularity by exporting our class to the public , and then we import it wherever we need it .
 
 ```java
 export class Person {

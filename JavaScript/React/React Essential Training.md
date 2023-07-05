@@ -10,7 +10,7 @@
 >
 > react is expanded beyound the web with React native , a tool that lets us build native mobile applications using react .
 
-![](F:\Programming Notes\JavaScript\React\assets\react.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\react.png)
 
 > React is used by `Uber` , `netflix` & `tweeter` these days
 
@@ -26,7 +26,7 @@
 >
 > with react we never read through the dom , we only change it when neccessary .
 
-![](F:\Programming Notes\JavaScript\React\assets\diffing.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\diffing.png)
 
 ## write a simple react code
 
@@ -268,8 +268,8 @@ export default Counter;
 
 ```javascript
 export default class Arash extends Component {
-    state {
-        count = 0,
+    state = {
+        count:0,
     };
     formatCount() {
         const {count}
@@ -280,7 +280,7 @@ export default class Arash extends Component {
 
 ## Applying Styles
 
-> we apply states in {{}} 
+> we apply styles in {{}} 
 
 :pushpin:**Like Bellow**
 
@@ -423,6 +423,14 @@ Increment = () => {
 }
 ```
 
+> Use New way like bellow :
+
+```react
+handleIncrement = () => {
+    this.setState(prevState => ({count:prevState.count + 1}));
+}
+```
+
 ## Passing Event Arguments
 
 > so whereEver you need to pass an Arguments to Event Handlers ( like onClick ) .
@@ -540,7 +548,7 @@ render() {
 
 > like in our example for clearing the value number , we shall use `Counters`& not `Counter`, this is although we have written the `Delete`method in the `Counter`but we raise an event from Counter to be red by the Counters . like bellow picuter
 
-![](F:\Programming Notes\JavaScript\React\assets\raiseevent.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\raiseevent.png)
 
 > basically we need to add a new method to our Counters component , and pass a reference to this method via props to the counter component .
 
@@ -556,7 +564,7 @@ handleDelete = (counterId) => {
 <button onClick={() => this.props.onDelete(this.props.id)} class="btn btn-danger btn-sm" />
 ```
 
-![](F:\Programming Notes\JavaScript\React\assets\handledelete.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\handledelete.png)
 
 > so Counter raises the `props.onDelete` & Counters handles `handleDelete`
 
@@ -580,7 +588,8 @@ export default class Counters extends Component {
         });
         this.setState({counters});
     };
-}
+} // well this is because as you know ( maps returns an array with the operation of that method on it . its not the case with forEach that returns nothing),
+// here what i did is mutating the variable (e.value = 0), and return it to new counter
 ```
 
 ## Controlling a component

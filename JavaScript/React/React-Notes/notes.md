@@ -9,24 +9,26 @@ export default class Arash {
     constructor(props) {
         super(props);
         this.state = {
-            'username':'',
-            'password':'',
+            data: {
+            	'username':'',
+            	'password':'',
+            }
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(event) {
-        this.setState({
-            [event.target.name]:event.target.value // notice it must be in []
-        })
+    handleChange(e) {
+        const changeData = {...this.state.data};
+        changeData[e.target.name] = e.target.value;
+        this.setState({data:changeData})
     }
-    handleSubmit(event) {
+    handleSubmit(e) {
         console.log(this.state);
     }
     render() {
         return (
             <div>
-            	<input type='text' name="username" onChange={()=>this.handleChange(event)}
+            	<input type='text' name="username" onChange={()=>this.handleChange(e)}
             </div>
         )
     }
