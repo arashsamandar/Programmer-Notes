@@ -272,7 +272,7 @@ export default class Arash extends Component {
         count:0,
     };
     formatCount() {
-        const {count}
+        const {count} = this.state
         return count === 0 ? <h1>Zero</h1> : count;
     }
 }
@@ -752,11 +752,11 @@ export default class App extends Component {
 
 #### Earlier before we could have manage to share the counters[] to from Counters ( which was the Parent ) , to the Counter (Which is the child) , but in bellow diagram how do we share it to the Navbar ?
 
-![](F:\Programming Notes\JavaScript\React\assets\relationshipParenChild.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\relationshipParenChild.png)
 
 #### Well the solution is to shift the parent one Level Up ( meaning the parent should be App )
 
-![](F:\Programming Notes\JavaScript\React\assets\rele.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\rele.png)
 
 > just like above
 
@@ -955,7 +955,7 @@ export default class Arash extends Component {
 
 ## Component LifyCycle
 
-![](F:\Programming Notes\JavaScript\React\assets\ComponentLifyCycle.png)
+![](E:\Programmer-Notes\JavaScript\React\assets\ComponentLifyCycle.png)
 
 > to add the props to the constructor first you need to pass `props`to the constructor . like bellow
 
@@ -998,7 +998,7 @@ export default class Arash extends Component {
 > this is a good place to perhaps clear some listeners and other things
 
 ```javascript
-componentWillUnmout() {
+componentWillUnmount() {
     
 }
 ```
