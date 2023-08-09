@@ -130,3 +130,25 @@ export default function NestedRoutes() {
 }
 ```
 
+----------
+
+## Use Cases like useEffect()
+
+> we have `useEffect` for handling the `mounted event` of the component , like below :
+>
+> ```react
+> function ArashComponent() {
+>     useEffect(()=>{
+>         console.log('component is mounting now');
+>     })
+>     return(
+>         <div>
+>         	Home
+>         </div>
+>     )
+> }
+> // or useRef() like below to address an element directly
+> const myUsername = useRef(null);
+> // then in the `return` in our input we can have :
+> <input type="text" ref={myUsername} />
+> ```

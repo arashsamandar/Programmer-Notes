@@ -1,3 +1,13 @@
+### Note
+
+##### in below code , we are populating the post using `setPost` which is a hook , pay attention that the `posted` value has returned from the server and got some properties of `post`
+
+```react
+const [post,setPost] = useState({});
+setPost({...post,...posted}); // now if they both have the same value ,
+// the 'poste' values would be used ( cause it came later )
+```
+
 ### what is a promise
 
 > a `promise` is an object that holds the result of an `asynchronous operation`
@@ -11,6 +21,24 @@
 > so this promises , promise to holds the result of an asynchronous operation .
 
 ### await
+
+> await it if you want the response and not the actual promise
+
+> when using below code ( using await ), you can get the result directly from the promise , and this time console doesn't show the Promise Object , but it shows Promise when it has been resolved and by that ( using await ), you can get your response after promise is resolved
+
+```react
+const folanFunction = async () => [
+    const promise = await axios.get('https://www.folani.com/posts');
+	console.log(promise); // return the data and etc ...
+]
+// but below is :
+const folanFunction = () => [
+    const promise = axios.get('https://www.folani.com/posts');
+	console.log(promise); // return the promise object
+] // now without using await it will show the (promise) object
+// thus await it if you want the response and not the promise object .
+// it is easier this way :)
+```
 
 > so we can `await` the promise , since we get the result ( result ) , 
 

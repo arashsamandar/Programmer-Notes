@@ -38,3 +38,5 @@ function loadDoc() {
 
 > **NOTE :** for `Ajax` in `Laravel` , and more complicated `Ajax` Requests with `JQuery` , watch the `Ajax` page at `Laravel` NoteBook
 
+
+
