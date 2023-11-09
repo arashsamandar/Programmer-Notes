@@ -53,6 +53,24 @@ app.listen(3000,()=>console.log('Server Started On Port 3000'));
 ## Defining middleware in express.js
 
 > In Express.js, middleware is a function that has access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle, typically denoted by the variable `next`
+>
+> __Important__ : we send a response to user with `res.send()` , but pay good attention that once you use `res.send()` or `res.json()` or any `res` , then the process will get finished.
+>
+> __Important__ : you can not use `res.send` both in your middleware and in your `route handler` .
+>
+> __Important__ : instead use `req` to attach something to the request and then you could get it in the `next` middleware or route handler , like below :
+> ```react
+> // in middleware
+> req.yourMessage = "this is my message to the next middleware or route handle"
+> // and in the route handler you can check for it like so :
+> if(req.yourMessage) {
+>     res.send('auth successfull with message ' + req.yourMessage);
+> }else {
+>     res.send('auth failed');
+> }
+> ```
+>
+> 
 
 ## difference between route handler and middleware
 
@@ -171,3 +189,66 @@ $response = Invoke-RestMethod -Method GET -Uri $welcomeUrl -Headers $headers
 $response
 ```
 
+## create variable in `powershell`
+
+#### how to create a `hashtable` in powershell and what it is
+
+> hashtable in windows powershell is used to define `key-value` pairs easily , like in bellow command to check the `express api` we have :
+>
+> ```
+> $headers = @{
+>     "Content-Type" = "application/json"
+>     "Authorization" = "Bearer your_token_here"
+> }
+> ```
+>
+> then sending them with :
+>
+> ```
+> $token = "your_token_here"
+> $headers = @{
+>     "x-auth-token" = $token
+> }
+> 
+> Invoke-RestMethod -Uri "https://example.com/api/endpoint" -Headers $headers -Method GET
+> ```
+
+## The `Config` module and it's porpuse :
+
+> in the root of our project we can create a folder named `config` , this folder would have files like `default.json` , `development.json` and or `published` version.
+> then install the `config` module with below command into your project :
+>
+> ```
+> npm install config
+> ```
+>
+> after than you can use like below and get the constants you have set into the json files , and it decides the value by whether we are in `development` or in `publish` or in the `default` case , all by below code :
+> ```react
+> const config = require('config');
+> 
+> if(config.get('arashValueAuthentication')) {
+>     console.log('Authentication needed');
+> }else{
+>     console.log('Authentication Not Needed');
+> }
+> ```
+
+{
+"username":"arash.samandar",
+  "email":"somevalue.folan@gmail.com",
+  "password":"Samandar#10"
+}
+
+
+
+eyJhbGciOiJIUzI1NiIsInR5asdfcCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFyYXNoLnNhbWFuZGFyIiwicGFzc3dvcmQiOiIkMmEkMTAkUm1FT1ZhbVU2LjNhbFk0QXZ4Y3JHZU9UWmVyNW9mMkg3b0tMMUdZNHJBVkpoSXQxY01VUjIiLCJpYXQiOjE2OTI4OTM0Nzd9.vF1uHbrFfPC8w2_dDeGpjkrgYVsZXn-AhelGvjoHgW0
+
+
+
+{
+  "username":"arash.solomon",
+  "email":"arash.some@gmaill.com",
+  "password":"Samandar#111"
+}
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFyYXNoLnNvbG9tb24iLCJwYXNzd29yZCI6IiQyYSQxMCRmUGhFRjlCaGhDSGRmVVk2bUJYL0UuWDR2V0tQbjhnbEFpdGNXcExtREZmd0l1NzlOdWl2VyIsImlhdCI6MTY5MjkwMjI4OX0.tFm8HsCwQSDAJIePu1FztPdd-Fkgq8-JihQ7eFtloDY
