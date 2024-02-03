@@ -5,7 +5,7 @@
 > for resolving this error use `git branch -M my-new-branch` when you are in your my-new-branch, the -M changes the name of the branch you are in
 
 ```text
-git branch -M my-new-branch
+git branch -M my-new-branch // it will move or rename the branch to my-new-bran
 git branch --set-upstream-to=origin/main main
 git merge origin/main --allow-unrelated-histories
 // this -M changes the name of the current branch with above command. it can also be used to move a branch
@@ -14,7 +14,11 @@ git merge origin/main --allow-unrelated-histories
 ### Local branch Tracking remote origin branch
 
 ```text
-git checkout ob mybranch origin/mybranch
+git checkout -b mybranch origin/mybranch
+// or below push the branch we are in to the origin/folanBranch
+git push -u origin arashsamandarBranch // create and push the origin/branch
+// or like below to upload to the remote branch named below
+git push origin arashsamandarBranch:remoteBranchName
 ```
 
 ### git pull

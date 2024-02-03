@@ -38,11 +38,13 @@ https://www.youtube.com/watch?v=y2NiXD7nSUQ
 
 php artisan make:job arashJob
 
-
+in `.env` file `Queue-Connection = database`
 
 php artisan queue:table
 
+php artisan migrate
 
+php artisan queue:work
 
 in the queue.php
 

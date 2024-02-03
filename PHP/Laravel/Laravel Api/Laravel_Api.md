@@ -85,7 +85,7 @@ return view('index')->with('petition',$petition);
 > {
 >     return parent::toArray($request);
 > }
-> // we change it to what we want , like bellow code :
+> // we change it to what we want ( overload ) , like bellow code :
 > public function toArray($request)
 >     {
 >         return [
@@ -208,14 +208,3 @@ class PetitionController extends Controller
 >                               Response::HTTP_OK)
 >     }
 > ```
->
-
-### Important
-
-> How to get message from a protected route group
->
-> ```
-> in the `Postman` , you must send Header : Accept > application/json
-> ```
->
-> 

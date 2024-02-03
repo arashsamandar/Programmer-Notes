@@ -41,13 +41,13 @@ git branch <new-branch-name> 23d234  (to create and name the branch you just bro
 
 git clone --mirror https://address..../arash.git .git (it gets the project and all of its branches)
 
-git checkout -b 02_01 origin/02_01  (not important)
+git checkout -b 02_01 origin/02_01
 
 git clone -b 00_start https://asdgasgd/asdfasf.git  (Important ! MOHEM agar ye roozi mikhay maale khodet ro clone koni (yeki az branch haa ro copy koni va edame bedi az roosh))
 
 ```
 
-![image-20210519213902188](D:\Programming Notes\GIT.assets\image-20210519213902188.png)
+![image-20210519213902188](E:\Programmer-Notes\GIT.assets\image-20210519213902188.png)
 
 ## If you want to push your repository to the GitHub
 
