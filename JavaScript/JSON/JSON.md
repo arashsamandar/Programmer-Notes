@@ -14,7 +14,7 @@ var alice = {
 }
 ```
 
-> thus jason object has
+> thus json object has
 
 - One ) {}
 - Two ) ""
