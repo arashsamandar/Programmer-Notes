@@ -1,5 +1,11 @@
 First every function must begin with the word __test__
 
+> Old versions test with
+>
+> ```bash
+> ./vendor/bin/phpunit tests/Feature/TestDates
+> ```
+
 > first i write my sample class and it's method ( in controller here ) named `Calculator`
 >
 > ```php
@@ -90,7 +96,5 @@ First every function must begin with the word __test__
 
 > so as you know `unit tests` are smaller and check the smaller portion of the code like how a method of a class works ( these tests also don't have access to Database or Apis ).
 >
-> on the other hand feature ( funtional tests ) have access to Database and Apis and etc ... and are testing a greator portion of the application .
-
-
+> on the other hand feature ( funtional tests ) have access to Database and Apis and etc ... and are testing a greatter portion of the application .
 

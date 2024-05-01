@@ -1,4 +1,4 @@
-> bellow code show a `typical function` in typescript :
+> bellow code shows a `typical function` in typescript :
 
 ```typescript
 function SomeNextJSFramework({params,}:{params:{id: string}}) {

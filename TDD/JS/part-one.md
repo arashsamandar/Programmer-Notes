@@ -32,7 +32,13 @@ and then `npm run test`
 
 -------------
 
-test a whole component and get the output ( on screen ) be checked in test :
+## Testing React
+
+> first install bellow packages
+>
+> ```bash
+> npm install --save-dev jest jest-environment-jsdom @testing-library/jest-dom @testing-library/react
+> ```
 
 ```javascript
 /**
@@ -65,3 +71,38 @@ const MySecondComponent = ({arashPropsHere}) => {
 
 export default MySecondComponent;
 ```
+
+### Test Click Event
+
+> first remember to install `@testing-library/user-even` 
+
+```javascript
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Counter from './Counter';
+
+describe('Counter', () => {
+ test('renders a count of 0', () => {
+    render(<Counter />);
+    const countElement = screen.getByRole('heading');
+    expect(countElement).toHaveTextContent('0');
+ });
+
+ test('renders a count of 1', () => {
+    render(<Counter initialCount={1} />);
+    const countElement = screen.getByRole('heading');
+    expect(countElement).toHaveTextContent('1');
+ });
+
+// -------------------- Checking User Event Click Bellow --------------------
+
+ test('renders a count of 1 after clicking the increment button', async () => {
+    render(<Counter />);
+    const incrementButton = screen.getByRole('button', { name: 'Increment' });
+    await userEvent.click(incrementButton);
+    const countElement = screen.getByRole('heading');
+    expect(countElement).toHaveTextContent('1');
+ });
+});
+```
+
