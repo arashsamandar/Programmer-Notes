@@ -1,23 +1,15 @@
-## About Next.js & a Comparison to a stand-alone back-end framework
+## types of data fetching in Next.js
 
-what do you mean by "next.js is for server side rendering ?", you mean i can't use it for a stand-alone back-end of my web application ?
+> 1. Static Generation : `getStaticProps` static ( build time ) data fetching, ideal for static contents like a gallary or blog
+>
+> 2. Server-side Rendering : `getServerSideProps` runs on every request, fetching the latest data and rendering the page server-side. This ensures that users always see the most current information.
+>
+> 3. Incremental Static Regeneration (ISR) : combination of both
+>
+> 4. Client-side Data Fetching Use Case : Suitable for data that changes in real-time or is user-specific.How It Works: Data is fetched on the client side, typically using React hooks like `useEffect` and state management. This method is useful for user-specific data or real-time data that doesn't need to be pre-rendered. Example : Useful for user profiles, real-time notifications, or any data that is specific to the user's session.
+>
+>    
 
-"Can Next.js be used as a stand-alone back-end or is it only for server-side rendering?"
+- **CSR (Client-Side Rendering)**: Data is fetched and the page is rendered in the browser after the initial page load. This approach is suitable for highly interactive applications where the content changes frequently or is user-specific.
 
-###### ANSWER
-
-Next.js is a server-rendered React framework that provides server-side rendering, static site generation, and client-side rendering options [nextjs.org](https://nextjs.org/learn/foundations/how-nextjs-works/rendering). Server-side rendering, in particular, means that the HTML of the page is generated on the server for each request, and the generated HTML, JSON data, and JavaScript instructions are then sent to the client [nextjs.org](https://nextjs.org/learn/foundations/how-nextjs-works/rendering). Therefore, Next.js can be used for back-end development, but it's important to note that it's not a stand-alone back-end for a web application. [stackoverflow.com](https://stackoverflow.com/questions/62690747/next-js-api-is-back-end) explains that Next.js is a pre-rendered React app in the client-side that users can view and interact with, and it also does server-side rendering and API routes which can perform server-side code and access data in the database.In conclusion, Next.js can be used for back-end development with server-side rendering, but it's not a stand-alone back-end for a web application. It's important to understand the capabilities and limitations of Next.js and choose the right technology for your specific project needs.
-
-## Express.js VS Next.js
-
-so as i gathered, next.js is very modern and is used solely for SSR, while express.js is a complete stand-alone back-end framework. is that right ?
-
-"Comparison between Next.js and Express.js for back-end development"
-
-###### ANSWER
-
-Yes, that's correct. Express.js is a stand-alone back-end framework that can be used for building APIs and server-side applications [stackoverflow.com](https://stackoverflow.com/questions/69918766/nextjs-vs-express) [mirrorfly.com](https://www.mirrorfly.com/blog/nextjs-vs-expressjs/), while Next.js is primarily a front-end framework that is used for server-side rendering, static site generation, and client-side rendering options [mirrorfly.com](https://nextjs.org/learn/foundations/how-nextjs-works/rendering). Next.js can be used alongside an existing back-end, but it's not a stand-alone back-end for a web application [red-gate.com](https://www.red-gate.com/simple-talk/development/javascript/express-js-or-next-js-for-your-backend-project/). Therefore, the choice between the two depends on the specific needs of the project, and developers can choose the best one that suits their needs [mirrorfly.com](https://www.mirrorfly.com/blog/nextjs-vs-expressjs/).
-
---------
-
-> Is good for SEO, fast initiall loading and most static contents
+- **SSG (Static Site Generation)**: Data is fetched at build time, and the page is pre-rendered as static HTML. This method is ideal for content that doesn't change often, as it provides fast load times and SEO benefits without the need for server-side processing on each request.

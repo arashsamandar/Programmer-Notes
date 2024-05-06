@@ -1,3 +1,9 @@
+## important 1
+
+> after creating a local new branch with `git checkout -b my-new-branch`
+>
+> you should push to the new desired remote branch with `git push origin my-new-branch-on-remote`
+
 ## Important :
 
 #### Resolving The `refspec error` when trying to push to the repository we have `just cloned`, from the branch we just created with `git checkout -b my-new-branch`
