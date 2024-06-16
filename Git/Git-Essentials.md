@@ -1,4 +1,4 @@
-## important 1
+## important 
 
 > after creating a local new branch with `git checkout -b my-new-branch`
 >
@@ -8,7 +8,7 @@
 
 #### Resolving The `refspec error` when trying to push to the repository we have `just cloned`, from the branch we just created with `git checkout -b my-new-branch`
 
-> for resolving this error use `git branch -M my-new-branch` when you are in your my-new-branch, the -M changes the name of the branch you are in
+> for resolving this error use `git branch -M my-new-branch` when you are in your my-new-branch, the -M changes the name of the branch you are in.
 
 ```text
 git branch -M my-new-branch // it will move or rename the branch to my-new-bran
@@ -35,12 +35,21 @@ git push origin arashsamandarBranch:remoteBranchName
 
 > is used to create a working copy of a remote repository
 
-### git pull
+### git pull , git push
 
 > like
 >
 > ```javascript
 > git pull origin master //connects origin(http://folan...) to master and pull it
+> 
+> ```
+>
+> another one is when you want to push to different remote repository like :
+>
+> ```javascript
+> git push origin master
+> // or
+> git push origin someRemoteBranch
 > ```
 
 ### git push
