@@ -12,7 +12,7 @@
 
 ```text
 git branch -M my-new-branch // it will move or rename the branch to my-new-bran
-git branch --set-upstream-to=origin/main main
+
 git merge origin/main --allow-unrelated-histories
 // this -M changes the name of the current branch with above command. it can also be used to move a branch
 ```
@@ -139,3 +139,20 @@ git push -u theDefaultOrigin theBranch
 git push -u origin master
 ```
 
+---------
+
+### How to `Stash` , `Pull` , and then Apply changes :
+
+```javascript
+git stash
+git pull
+git stash apply
+// or
+git stash apply --drop // to both apply the stashed files and then drop ( remove ) all of them
+```
+
+## how to undo things
+
+> in git if you only want to uncommit the commited changes use `git reset`
+>
+> but if you wanna move the head , and remove everything you have done use `git reset --hard`
