@@ -14,7 +14,7 @@ interface Fruit {
 
 let fruites: Array<Fruit> = [{'apple','green',11}];
 
-// Important : defining optional properties with [optional: any]: any;
+// Important : defining optional properties with [optional: any]: any
 
 interface Person {
     name: string;
