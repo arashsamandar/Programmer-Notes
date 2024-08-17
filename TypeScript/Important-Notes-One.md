@@ -108,13 +108,13 @@ let myFunction = function (
 > Note About Last Line Of Code :
 >
 > ```typescript
-> const age = Person.age || 0;
+> const age = Person.age || 0; // return the first true, or here the initialized one ( if Person.age is false then 0 would be sent )
 > ```
 >
 > because i've seen using `&&` like :
 >
 > ```jsx
-> { isLoading && <p>Loading...</p> } // if isLoading is true would return Loading...
+> { isLoading && <p>Loading...</p> } // jumps over trues and returns the last true it finds
 > ```
 >
 >  If all operands are true, the operator will return the value of the last operand.
@@ -221,7 +221,7 @@ let getDistance = (pointOne: Point,pointTwo: Point) => {
 
 ### Allocate Memory To an object or variable with `new`
 
-> Remember : if you use a `custom object`, but you don't use `new`, javascript ot typescript wouldn't allocate memory to it
+> Remember : if you use a `custom object`, but you don't use `new`, javascript or typescript wouldn't allocate memory to it
 
 ```typescript
 let folani: People;
@@ -286,6 +286,13 @@ let newarash = new Arash();
 newarash.name = 'arash';
 newarash.family = 'salamander';
 newarash.printOut();
+
+// NOTICE : recently hash `#` is used instead of `_` . and it would not even need the private keyword
+// like :
+class Something{
+    #name: string,
+    #family: string
+}
 ```
 
 > a complete example with the use of `_` underline as convention
