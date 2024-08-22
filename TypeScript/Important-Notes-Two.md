@@ -25,7 +25,10 @@ interface IUser extends mongodb.Document {
 }
 
 function checkIsIUser(user: any): user is IUser {
-return obj && (typeof user.name); 
+return obj &&
+    (typeof user.name === 'string') &&
+    (typeof user.family === 'string') &&
+    (typeof user.age === 'number');
     // surely user ( which here can be passed as any object ) should
     // should have the property 'name' . and we check here if it does then we say well it is of type     //our IUser 
 }
