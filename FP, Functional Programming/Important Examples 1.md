@@ -1,3 +1,5 @@
+## OOP When you have too many data ( Objects ). use FP when you have too many Operations
+
 # Use Whenever Possible
 
 - __Functions Only__
@@ -28,5 +30,3 @@ function squared_sum(x, y){
 ```
 
 > first code will create `additional`, `unimportant` variables to store data, using ( and address ) memory in places were it was not really needed.
->
-> introduces complexity and vulnerability to the program.
