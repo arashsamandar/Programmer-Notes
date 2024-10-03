@@ -52,16 +52,32 @@ sx={{
     width: '100%',
   },
 }}
-```
 
-or You can use theme breakpoints in the `sx` prop to apply styles based on the screen size. For example:
+// -------theme-breakpoints-in-the-`sx`-prop-to-apply styles based on the screen size
 
-```css
 sx={{
   [theme.breakpoints.down('sm')]: {
     width: '100%',
   },
 }}
+
+// ----------------------------------------Others-------------------------------------
+
+sx={{ ':active': { transform: 'scale(0.9)' } }}
+sx={{ ':disabled': { opacity: 0.5 } }}
+sx={{ ':visited': { color: 'purple' } }}
+
+// ----------------------------------applied to the first child element of a container.
+
+sx={{ ':first-child': { fontSize: '24px' } }}
+
+// --------------------------------------applied to the nth child element of a containe
+
+sx={{ ':nth-child(2)': { fontSize: '20px' } }}
+
+
+
+
 ```
 
 # Example
