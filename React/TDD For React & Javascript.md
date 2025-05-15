@@ -1,3 +1,59 @@
+## For React.js Component
+
+> test files should be `test.jsx` and Not `test.js` ( if you want component render and screen for it )
+>
+> Install libraries :
+
+├── jest
+├──	@testing-library/user-event
+├──	@testing-library/jest-dom
+├── @testing-library/react
+├── vitest
+
+```react
+	include :
+		import { describe, it, expect, vi } from 'vitest';
+		import '@testing-library/jest-dom';
+		import { render, screen } from '@testing-library/react';
+		import userEvent from '@testing-library/user-event';
+		import AddBooksForm from "../src/components/test_components/AddBooksForm.jsx";
+```
+
+> Example :
+
+```react
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import AddBooksForm from "../src/components/test_components/AddBooksForm.jsx";
+
+describe('doing test for my ReactJS Component', () => {
+    test('sample test', async () => {
+
+        const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {});
+
+        render(<AddBooksForm />);
+
+        const input1 = screen.getByLabelText(/name/i);
+        const input2 = screen.getByLabelText(/email/i);
+        const input3 = screen.getByLabelText(/password/i); // Get the first password input
+        const input4 = screen.getByPlaceholderText("confirm password");
+        const submitButton = screen.getByRole('button', { name: /submit/i });
+
+        await userEvent.type(input1, 'arashSalamander');
+        await userEvent.type(input2, 'arash.internet@gmail.com');
+        await userEvent.type(input3, '123456');
+        await userEvent.type(input4, '123456');
+        await userEvent.click(submitButton);
+
+        await expect(alertMock).toHaveBeenCalledTimes(1);
+        expect(alertMock).toHaveBeenCalledWith('hello arash solomon');
+    });
+});
+```
+
+## Section Two ( 2 )
+
 > first install the libraries needed for react ( remember to install only for development)
 >
 > ```
