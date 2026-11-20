@@ -1,6 +1,15 @@
 
-View you .md files :
-__mdview__
+# View you .md files :
+mdview
+
+# Disk & Partition
+
+> To see disk space :
+df -h /
+
+> To see the size of current folder :
+du -sh .
+du -sh *
 
 # ------------------------------- My Services -----------------------------------
 
@@ -11,23 +20,7 @@ systemctl status kbd-idle-lock.Service  AND   journalctl -u kbd-idle-lock.servic
 # ------------ Change Timer -------------
 Change the timeout later: edit Environment=IDLE_SECONDS=300 in
 /etc/systemd/system/kbd-idle-lock.service
-then run 
+then run
 sudo systemctl daemon-reload && sudo systemctl restart kbd-idle-lock.service
 
 # --------------------------------- Tutorial -------------------------------------------
-
-> kill a process by name :
-pkill
-
-> kill a process by PID :
-kill
-
-> kill a process that is running on a port :
-sudo fuser -k 3000/tcp
-
-> To see disk space :
-df -h /
-
-> To see the size of current folder :
-du -sh .
-du -sh *
